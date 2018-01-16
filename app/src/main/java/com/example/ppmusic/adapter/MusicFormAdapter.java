@@ -1,17 +1,5 @@
 package com.example.ppmusic.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.example.ppmusic.FormatHelper;
-import com.example.ppmusic.MyApp;
-import com.example.ppmusic.R;
-import com.example.ppmusic.bean.MusicInfo;
-import com.example.ppmusic.fragment.MainFragment3;
-import com.example.ppmusic.helpers.utils.MusicUtils;
-import com.example.ppmusic.interfaces.FilterListener;
-import com.example.ppmusic.ui.fragment.list.CopyOfRecentlyAddedFragment;
-
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.RemoteException;
@@ -25,7 +13,16 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MusicAdapter extends BaseAdapter implements Filterable {
+import com.example.ppmusic.FormatHelper;
+import com.example.ppmusic.R;
+import com.example.ppmusic.bean.MusicInfo;
+import com.example.ppmusic.helpers.utils.MusicUtils;
+import com.example.ppmusic.interfaces.FilterListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MusicFormAdapter extends BaseAdapter implements Filterable {
 	// 帧动画
 	private AnimationDrawable mPeakOneAnimation, mPeakTwoAnimation,
 			mPeakThreeAnimation;
@@ -33,8 +30,8 @@ public class MusicAdapter extends BaseAdapter implements Filterable {
 	private Context mContext;
 	private MyFilter filter = null;// 创建MyFilter对象
 	private FilterListener listener = null;// 接口对象
-	
-	public MusicAdapter(List<MusicInfo> musicList,Context mContext, FilterListener filterListener){
+
+	public MusicFormAdapter(List<MusicInfo> musicList, Context mContext, FilterListener filterListener){
 		this.mContext = mContext;
 		this.musicList = musicList;
 		this.listener = filterListener;
@@ -91,11 +88,11 @@ public class MusicAdapter extends BaseAdapter implements Filterable {
 		if (currentaudioid == audioid) {
 
 			viewHolder.mPeakOne
-					.setImageResource(R.anim.peak_white_1);
+					.setImageResource(R.anim.peak_meter_1);
 			viewHolder.mPeakTwo
-					.setImageResource(R.anim.peak_white_2);
+					.setImageResource(R.anim.peak_meter_2);
 			viewHolder.mPeakThree
-					.setImageResource(R.anim.peak_white_3);
+					.setImageResource(R.anim.peak_meter_3);
 			mPeakOneAnimation = (AnimationDrawable) viewHolder.mPeakOne
 					.getDrawable();
 			mPeakTwoAnimation = (AnimationDrawable) viewHolder.mPeakTwo

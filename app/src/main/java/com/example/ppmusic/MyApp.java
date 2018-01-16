@@ -50,23 +50,6 @@ public class MyApp extends Application {
 
 	public static ImageLoader imageLoader;
 
-	private void connectToNatureService() {
-		Intent intent = new Intent(this, CMusicService.class);
-		bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
-	}
-
-	private ServiceConnection serviceConnection = new ServiceConnection() {
-		@Override
-		public void onServiceDisconnected(ComponentName name) {
-             Log.i("CGQ","断开");
-		}
-
-		@Override
-		public void onServiceConnected(ComponentName name, IBinder service) {
-			natureBinder = (NatureBinder) service;
-		}
-	};
-
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -84,8 +67,6 @@ public class MyApp extends Application {
 		//initDB();
 
         preferencesService = new PreferencesService(getContext());
-
-
 
 		initDir();
 

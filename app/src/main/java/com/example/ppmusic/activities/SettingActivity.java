@@ -347,13 +347,16 @@ public class SettingActivity extends MyBaseActivity implements OnClickListener {
 					case "WelcomePagePath":
 						setPicturePath("WelcomepaperUri","");
 						MyApp.getPreferencesService().save("WelcomePagerPath", "默认");
-						tv_wallpage_path.setText(MyApp.getPreferencesService()
+						tv_welcomepage_path.setText(MyApp.getPreferencesService()
 								.getValue("WelcomePagerPath", "默认"));
 						break;
 					default:
 						break;
 				}
-
+				Intent intent = new Intent();
+				intent.setAction(Action_WallBackGround);
+				intent.setAction(Action_WellComeBackGround);
+				sendBroadcast(intent);
 				pop.dismiss();
 			}
 		});

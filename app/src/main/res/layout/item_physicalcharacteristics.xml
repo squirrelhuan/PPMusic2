@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android_custom="http://schemas.android.com/apk/res/com.geeppies.leijq.myapplication"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:ignore="ResAuto">
+
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/music_bar3"/>
+
+ <!--   <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:gravity="center"
+        android:minWidth="60dp"
+        android:singleLine="true"
+        android:text="肺"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tv_valuestr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+3/8cm"
+        android:textSize="14dp"
+        android:singleLine="true"
+        android:textColor="@color/white"/>-->
+
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="@integer/peak" android:drawable="@drawable/indicator_playing_peak_white_1" />
+    <item android:duration="@integer/peak" android:drawable="@drawable/indicator_playing_peak_white_3" />
+    <item android:duration="@integer/peak" android:drawable="@drawable/indicator_playing_peak_white_0" />
+    <item android:duration="@integer/peak" android:drawable="@drawable/indicator_playing_peak_white_2" />
+    <item android:duration="@integer/peak" android:drawable="@drawable/indicator_playing_peak_white_4" />
+</animation-list>

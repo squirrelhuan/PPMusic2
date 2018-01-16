@@ -2,51 +2,46 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
+        <com.example.ppmusic.view.custom.CustomScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none">
+            android:fillViewport="false">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <FrameLayout
+                <ImageView
+                    android:id="@+id/iv_img"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/iv_img"
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/night1" />
-                </FrameLayout>
+                    android:layout_height="180dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/night1" />
 
                 <com.example.ppmusic.view.custom.CustomListView
                     android:id="@+id/lvSongs"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="3dp"
-                    android:layout_marginBottom="5dp"
-                    android:divider="@null"
-                    android:layoutAnimation="@anim/layout_animation" />
+                    android:divider="@null" />
+                <!--
+                                android:layoutAnimation="@anim/layout_animation"-->
             </LinearLayout>
 
-        </ScrollView>
+        </com.example.ppmusic.view.custom.CustomScrollView>
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -74,20 +69,20 @@
                         android:id="@+id/tv_search"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/search"
-                        android:drawablePadding="10dp"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
+                        android:background="@drawable/shape_bg"
+                        android:drawableLeft="@drawable/search"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:hint="搜索"
+                        android:paddingBottom="5dp"
+
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-
-                        android:gravity="center_vertical"
-                        android:background="@drawable/shape_bg"
-                        android:textSize="16sp"
-                        android:hint="搜索"
-                        android:textColor="#8A8A8A" />
+                        android:textColor="#8A8A8A"
+                        android:textSize="16sp" />
                 </LinearLayout>
             </RelativeLayout>
         </android.support.v7.widget.Toolbar>

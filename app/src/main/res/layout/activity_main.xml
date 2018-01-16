@@ -65,22 +65,4 @@
     </LinearLayout>
 
 
-
-
-
-    <!--<RelativeLayout
-        android:id="@+id/rl_for_cd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:name="com.example.ppmusic.ui.fragment.SelectCDLayout"
-        android:background="@color/transparent_33">
-        <fragment
-            android:id="@+id/selectCDLayout_new"
-            android:name="com.example.ppmusic.ui.fragment.PPSelectCDFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </RelativeLayout>-->
-
 </RelativeLayout>

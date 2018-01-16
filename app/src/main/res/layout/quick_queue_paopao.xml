@@ -4,108 +4,83 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@drawable/background_wall_001">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-        </LinearLayout>
-
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="vertical"></LinearLayout>
-
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_alignParentBottom="true"
-        android:layout_weight="1.6"
-        android:background="@color/transparent_cc"
-        android:orientation="vertical">
-
-        <HorizontalScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/ll_select_gone"
-            android:layout_margin="5dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp">
-
-                <GridView
-                    android:id="@+id/gridview"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:numColumns="auto_fit"
-                    android:stretchMode="spacingWidthUniform"></GridView>
-            </LinearLayout>
-        </HorizontalScrollView>
+            android:orientation="vertical">
+            </LinearLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
-            android:gravity="bottom"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center" >
+            android:layout_gravity="center"
+            android:layout_weight="1.5"
+            android:orientation="vertical">
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center" >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center" >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:background="@drawable/select_cd_bg_01">
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center" >
+                </LinearLayout>
 
-                <ImageButton
-                    android:id="@+id/bottom_select_cd_close"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:button="@null"
-                    android:background="@drawable/record_card_more02"></ImageButton>
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/iv_icon"
+                    android:layout_width="126dp"
+                    android:layout_height="65dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="168dp"
+                    android:background="@drawable/circle_white_bg"
+                    android:padding="5dp" />
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewpager"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:clipChildren="false"
+                    android:fadingEdge="none"
+                    android:overScrollMode="never">
+
+                </android.support.v4.view.ViewPager>
+            </RelativeLayout>
+
         </LinearLayout>
-    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/select_cd_bg_02">
+
+            <ListView
+                android:id="@+id/lvSongs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="3dp"
+                android:divider="@null" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
-    <GridView
-        android:id="@+id/gridview1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:cacheColorHint="@color/transparent"
-        android:drawSelectorOnTop="false"
-        android:listSelector="@color/transparent"
-        android:scrollbars="none"
-        android:visibility="gone"/>
+
 
 </RelativeLayout>

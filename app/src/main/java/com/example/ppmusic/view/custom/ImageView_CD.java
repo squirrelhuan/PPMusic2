@@ -59,7 +59,7 @@ public class ImageView_CD extends AppCompatImageView {
 
         canvas.drawCircle(width/2, width/2, width/2, paint);
         Path path = new Path();
-        int w1 = width/3;
+        int w1 = width/6;
         path.addCircle(width/2, width/2, w1, Path.Direction.CCW);
         Path path2 = new Path();
         int w2 = width*9/20;

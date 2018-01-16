@@ -3,6 +3,7 @@ package com.example.ppmusic.fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -57,9 +58,11 @@ import com.example.ppmusic.base.MyBaseFragment;
 import com.example.ppmusic.bean.MusicInfo;
 import com.example.ppmusic.helpers.utils.MusicUtils;
 import com.example.ppmusic.interfaces.FilterListener;
+import com.example.ppmusic.service.ApolloService;
 import com.example.ppmusic.ui.adapters.TrackAdapter;
 import com.example.ppmusic.utils.DBUtils;
 import com.example.ppmusic.view.custom.CustomListView;
+import com.example.ppmusic.view.custom.CustomScrollView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,14 +105,14 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 
 	EditText tvSearch;
 	LinearLayout mSearchLayout;
-	ScrollView mScrollView;
+	CustomScrollView mScrollView;
 	boolean isExpand = true;
 	ImageView ivImg;
 	Toolbar toolbar;
 	private TransitionSet mSet;
 
 	// Adapter
-	private TrackAdapter mTrackAdapter;
+	//private TrackAdapter mTrackAdapter;
 	private MusicAdapter adapter;
 	// Cursor
 	private Cursor mCursor;
@@ -144,7 +147,6 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 			public void getFilterData(final List<MusicInfo> list) {
 				// 这里可以拿到过滤后数据，所以在这里可以对搜索后的数据进行操作
 				Log.e("TAG", "接口回调成功");
-				Log.e("TAG", list.toString());
 				lvSongs.setOnItemClickListener(new OnItemClickListener() {
 					@Override
 					public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -227,28 +229,16 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 		isEditMode();
 
 		// Adapter
-		mTrackAdapter = new TrackAdapter(getActivity(), R.layout.listview_items, null,
-				new String[] {}, new int[] {}, 0);
+		//mTrackAdapter = new TrackAdapter(getActivity(), R.layout.listview_items, null,
+		//		new String[] {}, new int[] {}, 0);
 		lvSongs.setOnCreateContextMenuListener(this);
-		//lvSongs.setOnItemClickListener(this);
-		//lvSongs.setAdapter(mTrackAdapter);
-		//lvSongs.setAdapter(adapter);
 
 		// Important!
 		getLoaderManager().initLoader(0, null, this);
-/*
-		mPlaylistAdapter = new PlaylistAdapter(getActivity(), R.layout.listview_items, null,
-				new String[] {}, new int[] {}, 0);
-		//mListView = (ListView)rootView.findViewById(android.R.id.list);
-		lvSongs.setOnCreateContextMenuListener(this);
-		lvSongs.setAdapter(mPlaylistAdapter);
-		lvSongs.setOnItemClickListener(this);
-
-		getLoaderManager().initLoader(0, null, this);*/
 
 		tvSearch = (EditText) findViewById(R.id.tv_search);
 		mSearchLayout = (LinearLayout) findViewById(R.id.ll_search);
-		mScrollView = (ScrollView) findViewById(R.id.scrollView);
+		mScrollView = (CustomScrollView) findViewById(R.id.scrollView);
 		toolbar = (Toolbar) findViewById(R.id.toolbar);
 		ivImg = (ImageView) findViewById(R.id.iv_img);
 
@@ -276,23 +266,10 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 		setListeners();
 	}
 	private void setListeners() {
-		// 没有进行搜索的时候，也要添加对listView的item单击监听
-		//setItemClick(list);
-
-		/**
-		 * 对编辑框添加文本改变监听，搜索的具体功能在这里实现
-		 * 很简单，文本该变的时候进行搜索。关键方法是重写的onTextChanged（）方法。
-		 */
 		tvSearch.addTextChangedListener(new TextWatcher() {
-
-			/**
-			 *
-			 * 编辑框内容改变的时候会执行该方法
-			 */
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
 									  int count) {
-				// 如果adapter不为空的话就根据编辑框中的内容来过滤数据
 				if(adapter != null){
 					adapter.getFilter().filter(s);
 				}
@@ -524,21 +501,25 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 			musicInfo.setId(data.getLong(MainFragment3.mMediaIdIndex));
 			musicInfo.setArtist(data.getString(MainFragment3.mArtistIndex));
 			musicInfo.setTitle(data.getString(MainFragment3.mTitleIndex));
+			musicInfo.setAlbum(data.getString(MainFragment3.mAlbumIndex));
 			musicInfo.setPosition(index);
 			musicList.add(musicInfo);
 			index++;
 		}
 		Log.i("CGQ","size="+musicList.size());
-		mTrackAdapter.changeCursor(data);
-		lvSongs.invalidateViews();
+		//mTrackAdapter.changeCursor(data);
+		//lvSongs.invalidateViews();
 		mCursor = data;
+		adapter.notifyDataSetChanged();
+		mScrollView.smoothScrollTo(0, 0);
 	}
 
 	@Override
 	public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
-		if (mTrackAdapter != null)
-			mTrackAdapter.changeCursor(null);
+		/*if (mTrackAdapter != null)
+			mTrackAdapter.changeCursor(null);*/
 	}
+
 
 
 	@Override
@@ -627,7 +608,7 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
         } else if (mPlaylistId == PLAYLIST_FAVORITES) {
             MusicUtils.removeFromFavorites(getActivity(), id);
         }
-        lvSongs.invalidateViews();
+       // lvSongs.invalidateViews();
     }
 
     /**
@@ -661,11 +642,19 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
             }
             selection.append(")");
             mCursor = MusicUtils.query(getActivity(), uri, cols, selection.toString(), null, MediaColumns.TITLE);
-            mTrackAdapter.changeCursor(mCursor);
-			lvSongs.invalidateViews();
+            //mTrackAdapter.changeCursor(mCursor);
+			//lvSongs.invalidateViews();
         }
     }
 
+	@Override
+	public void onStart() {
+		super.onStart();
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(ApolloService.META_CHANGED);
+		filter.addAction(ApolloService.PLAYSTATE_CHANGED);
+		getActivity().registerReceiver(mMediaStatusReceiver, filter);
+	}
 	/**
 	 * Update the list as needed
 	 */
@@ -674,15 +663,15 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			if (lvSongs != null) {
-				mTrackAdapter.notifyDataSetChanged();
+				adapter.notifyDataSetChanged();
 				// Scroll to the currently playing track in the queue
-				if (mPlaylistId == PLAYLIST_QUEUE)
+				/*if (mPlaylistId == PLAYLIST_QUEUE)
 					lvSongs.postDelayed(new Runnable() {
 						@Override
 						public void run() {
 							lvSongs.setSelection(MusicUtils.getQueuePosition());
 						}
-					}, 100);
+					}, 100);*/
 			}
 		}
 

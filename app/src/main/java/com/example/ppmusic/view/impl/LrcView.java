@@ -56,7 +56,7 @@ public class LrcView extends View implements ILrcView {
     /**
      * 当前高亮歌词的字体颜色为黄色
      */
-    private int mHignlightRowColor = Color.YELLOW;
+    private int mHignlightRowColor = 0xccffffff;
     /**
      * 不高亮歌词的字体颜色为白色
      */
@@ -113,7 +113,7 @@ public class LrcView extends View implements ILrcView {
     /**
      * 当没有歌词的时候展示的内容
      **/
-    private String mLoadingLrcTip = "Downloading lrc...";
+    private String mLoadingLrcTip = "暂无歌词";
 
     private Paint mPaint;
 

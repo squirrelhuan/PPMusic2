@@ -20,13 +20,10 @@ import android.database.Cursor;
 import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.provider.BaseColumns;
 import android.provider.MediaStore.Audio;
 import android.provider.MediaStore.Audio.AudioColumns;
 import android.provider.MediaStore.MediaColumns;
-import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -43,21 +40,20 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.example.ppmusic.NowPlayingCursor;
 import com.example.ppmusic.R;
 import com.example.ppmusic.activities.MainActivity;
 import com.example.ppmusic.adapter.MusicAdapter;
+import com.example.ppmusic.adapter.MusicFormAdapter;
 import com.example.ppmusic.bean.MusicInfo;
+import com.example.ppmusic.fragment.MainFragment3;
 import com.example.ppmusic.helpers.AddIdCursorLoader;
 import com.example.ppmusic.helpers.utils.MusicUtils;
 import com.example.ppmusic.interfaces.FilterListener;
 import com.example.ppmusic.service.ApolloService;
-import com.example.ppmusic.ui.adapters.Adapter_PhysicalCharacteristics;
 import com.example.ppmusic.ui.adapters.PPQuickQueueAdapter;
-import com.example.ppmusic.ui.adapters.QuickQueueAdapter;
 import com.example.ppmusic.view.custom.CustomListView;
 
 import java.util.ArrayList;
@@ -66,11 +62,14 @@ import java.util.List;
 /**
  * @author Andrew Neal
  */
-public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cursor>,
+public class PPQuickQueueFragment01 extends Fragment implements LoaderCallbacks<Cursor>,
         OnItemClickListener {
 
     // Adapter
     private PPQuickQueueAdapter mQuickQueueAdapter;
+
+    // GridView
+    private GridView mGridView;
 
     // Cursor
     private Cursor mCursor;
@@ -89,30 +88,31 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
     public static int mTitleIndex, mAlbumIndex, mArtistIndex, mMediaIdIndex, mAlbumIdIndex;
 
     // Bundle
-    public PPQuickQueueFragment() {
+    public PPQuickQueueFragment01() {
     }
     @SuppressLint("ValidFragment")
-   public PPQuickQueueFragment(Bundle args) {
+   public PPQuickQueueFragment01(Bundle args) {
         setArguments(args);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         // Adapter
-        /*mQuickQueueAdapter = new PPQuickQueueAdapter(getActivity(), R.layout.quick_queue_items_paopao, null,
-                new String[] {}, new int[] {}, 0);*/
+        mQuickQueueAdapter = new PPQuickQueueAdapter(getActivity(), R.layout.quick_queue_items_paopao, null,
+                new String[] {}, new int[] {}, 0);
+
 
         // Important!
         getLoaderManager().initLoader(0, null, this);
         super.onActivityCreated(savedInstanceState);
     }
 
-    private ListView lvSongs;
-    private MusicAdapter adapter;
+    private CustomListView lvSongs;
+    private MusicFormAdapter adapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.quick_queue_paopao, container, false);
-        //mGridView = (GridView)root.findViewById(R.id.gridview);
+        mGridView = (GridView)root.findViewById(R.id.gridview);
         //mGridView.setNumColumns(1);
         iv_cd = new ImageView(getActivity());
 
@@ -124,7 +124,7 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
             }
         });
         mQueueHolder.addView(iv_cd);
-        mQueueHolder.setBackgroundColor(getResources().getColor(R.color.transparent_white_33));
+        mQueueHolder.setBackgroundColor(getResources().getColor(R.color.transparent_33));
         /*bottom_select_cd_close = (ImageButton) root.findViewById(R.id.bottom_select_cd_close);
         bottom_select_cd_close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,10 +132,9 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
                 getActivity().finish();
             }
         });*/
-        initSelectCD(root);
 
-        lvSongs = (ListView) root.findViewById(R.id.lvSongs);
-        adapter = new MusicAdapter(musicList,getActivity(),new FilterListener() {
+        lvSongs = (CustomListView) root.findViewById(R.id.lvSongs);
+        adapter = new MusicFormAdapter(musicList,getActivity(),new FilterListener() {
             // 回调方法获取过滤后的数据
             public void getFilterData(final List<MusicInfo> list) {
                 // 这里可以拿到过滤后数据，所以在这里可以对搜索后的数据进行操作
@@ -159,118 +158,7 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
             }
         });
         lvSongs.setAdapter(adapter);
-        lvSongs.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                try{
-                    if (mCursor instanceof NowPlayingCursor) {
-                        if (MusicUtils.mService != null) {
-                            MusicUtils.setQueuePosition(i);
-                            return;
-                        }
-                    }
-                    MusicUtils.playAll(getActivity(), mCursor, i);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
-        });
         return root;
-    }
-
-    private int screenWidth = 0;
-    private ViewPager viewPager;
-    private MotionEvent eventc;
-    private boolean isClicked;
-    private RelativeLayout container;
-    private Adapter_PhysicalCharacteristics adater;
-    private void initSelectCD(View root) {
-        // 獲取屏幕寬度
-        DisplayMetrics dm = getResources().getDisplayMetrics();
-        screenWidth = dm.widthPixels;
-        viewPager = (ViewPager) root.findViewById(R.id.viewpager);
-        //viewPager.setPageMargin(20);
-        viewPager.setOffscreenPageLimit(1);
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                screenWidth / 2, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.setMargins(screenWidth / 5, 0, screenWidth / 5, 0);
-       // viewPager.setLayoutParams(params);
-
-        List<String> list = new ArrayList<String>();
-        list.add("喜欢");
-        list.add("海翻天");
-        list.add("安静");
-        adater = new Adapter_PhysicalCharacteristics(getActivity(),list);
-        viewPager.setAdapter(adater);
-
-        viewPager.setPageTransformer(false, new ScaleTransformer());
-        // 将父节点Layout事件分发给viewpager，否则只能滑动中间的一个view对象
-       // container = (RelativeLayout) root.findViewById(R.id.ll_container);
-      /*  container.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        if (eventc == null) {
-                            eventc = event;
-                            isClicked = true;
-                        }
-                        return viewPager.dispatchTouchEvent(event);
-                    case MotionEvent.ACTION_MOVE:
-                        if (Math.abs(event.getX() - eventc.getX()) < 60 && Math.abs(event.getY() - eventc.getY()) < 60) {
-                        } else {
-                            isClicked = false;
-                        }
-                        return viewPager.dispatchTouchEvent(event);
-                    case MotionEvent.ACTION_UP:
-                        eventc = null;
-                        if (event.getX() < container.getWidth() / 4) {
-                            if (isClicked) {
-                                //Toast.makeText(PhysicalCharacteristicsActivity.this, "left", Toast.LENGTH_SHORT).show();
-                                if (viewPager.getCurrentItem() != 0) {
-                                    viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
-                                }
-                                return false;
-                            } else {
-                                return viewPager.dispatchTouchEvent(event);
-                            }
-                        } else if (event.getX() > container.getWidth() * 3 / 4) {
-                            if (isClicked) {
-                                //Toast.makeText(PhysicalCharacteristicsActivity.this, "right", Toast.LENGTH_SHORT).show();
-                                if (viewPager.getCurrentItem() < viewPager.getChildCount() + 1) {
-                                    viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
-                                }
-                                return false;
-                            } else {
-                                return viewPager.dispatchTouchEvent(event);
-                            }
-                        } else {
-                            //Toast.makeText(PhysicalCharacteristicsActivity.this, "center", Toast.LENGTH_SHORT).show();
-                            return viewPager.dispatchTouchEvent(event);
-                        }
-                }
-                return viewPager.dispatchTouchEvent(event);
-            }
-        });
-*/
-       /* ImageView iv_left = (ImageView) root.findViewById(R.id.iv_toleft);
-        ImageView iv_right = (ImageView) root.findViewById(R.id.iv_toright);
-        iv_left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (viewPager.getCurrentItem() < viewPager.getChildCount() + 1) {
-                    viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
-                }
-            }
-        });
-        iv_right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (viewPager.getCurrentItem() != 0) {
-                    viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
-                }
-            }
-        });*/
     }
 
     int size;
@@ -306,7 +194,15 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
         int itemWidth = (int) (length * density);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(gridviewWidth, LinearLayout.LayoutParams.FILL_PARENT);
+        mGridView.setLayoutParams(params); // 设置GirdView布局参数,横向布局的关键
+        mGridView.setColumnWidth(itemWidth); // 设置列表项宽
+        mGridView.setHorizontalSpacing(5); // 设置列表项水平间距
+        mGridView.setStretchMode(GridView.NO_STRETCH);
+        mGridView.setNumColumns(size); // 设置列数量=列表集合数
 
+        mGridView.setOnCreateContextMenuListener(this);
+        mGridView.setOnItemClickListener(this);
+        mGridView.setAdapter(mQuickQueueAdapter);
 
         return new AddIdCursorLoader(getActivity(), uri, projection, selection.toString(), null,
                 sortOrder);
@@ -325,9 +221,6 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
         mArtistIndex = data.getColumnIndexOrThrow(AudioColumns.ARTIST);
         mAlbumIndex = data.getColumnIndexOrThrow(AudioColumns.ALBUM);
         mAlbumIdIndex = data.getColumnIndexOrThrow(AudioColumns.ALBUM_ID);
-        //mQuickQueueAdapter.changeCursor(data);
-        mCursor = data;
-
         int index  = 0;
         while (data.moveToNext()) {
             MusicInfo musicInfo = new MusicInfo();
@@ -339,7 +232,8 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
             musicList.add(musicInfo);
             index++;
         }
-
+        mQuickQueueAdapter.changeCursor(data);
+        mCursor = data;
         adapter.notifyDataSetChanged();
     }
 
@@ -523,7 +417,7 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
         long id = mCursor.getLong(mMediaIdIndex);
         MusicUtils.removeTrack(id);
         reloadQueueCursor();
-        //mGridView.invalidateViews();
+        mGridView.invalidateViews();
     }
 
     /**
@@ -562,15 +456,15 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (adapter != null) {
-                adapter.notifyDataSetChanged();
+            if (mGridView != null) {
+                mQuickQueueAdapter.notifyDataSetChanged();
                 // Scroll to the currently playing track in the queue
-               /* mGridView.postDelayed(new Runnable() {
+                mGridView.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         mGridView.setSelection(MusicUtils.getQueuePosition());
                     }
-                }, 100);*/
+                }, 100);
             }
         }
 
@@ -590,42 +484,4 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
         getActivity().unregisterReceiver(mMediaStatusReceiver);
         super.onStop();
     }
-
-
-
-
-
-
-
-
-
-
-    public class ScaleTransformer implements ViewPager.PageTransformer {
-        private static final float MIN_SCALE = 0.70f;
-        private static final float MIN_ALPHA = 0.5f;
-
-        @Override
-        public void transformPage(View page, float position) {
-            if (position < -1 || position > 1) {
-                page.setAlpha(MIN_ALPHA);
-                page.setScaleX(MIN_SCALE);
-                page.setScaleY(MIN_SCALE);
-            } else if (position <= 1) { // [-1,1]
-                float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
-                if (position < 0) {
-                    float scaleX = 1 + 0.4f * position;
-                    Log.d("google_lenve_fb", "transformPage: scaleX:" + scaleX);
-                    page.setScaleX(scaleX);
-                    page.setScaleY(scaleX);
-                } else {
-                    float scaleX = 1 - 0.4f * position;
-                    page.setScaleX(scaleX);
-                    page.setScaleY(scaleX);
-                }
-                page.setAlpha(MIN_ALPHA + (scaleFactor - MIN_SCALE) / (1 - MIN_SCALE) * (1 - MIN_ALPHA));
-                //tv_description.setAlpha(0.7f + (scaleFactor - 0.7f) / (1 - 0.7f) * (1 - 0.7f));
-            }
-        }
-    }
-
 }
