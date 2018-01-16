@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_action_bar_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/bottom_action_bar_info_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_action_bar_divider_height"
+        android:background="@color/holo_blue_dark"
+        tools:ignore="ContentDescription" 
+        android:visibility="gone"/>
+
+    <com.example.ppmusic.ui.widgets.BottomActionBar
+        android:id="@+id/bottom_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/holo_selector"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/bottom_action_bar_padding_left" >
+
+        <ImageView
+            android:id="@+id/bottom_action_bar_album_art"
+            android:layout_width="@dimen/bottom_action_bar_album_art_width_height"
+            android:layout_height="@dimen/bottom_action_bar_album_art_width_height"
+            android:layout_gravity="left|center"
+            android:contentDescription="@string/cd_bottom_action_bar_album_art"
+            android:scaleType="fitXY"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:paddingLeft="@dimen/bottom_action_bar_info_padding_left" >
+
+            <TextView
+                android:id="@+id/bottom_action_bar_track_name"
+                style="@style/BottomActionBarText"
+                android:textColor="@color/transparent_black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/bottom_action_bar_artist_name"
+                style="@style/BottomActionBarText"
+                android:textColor="@color/transparent_black" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <SeekBar
+                android:id="@+id/sb_music_process"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:maxHeight="30dip"
+                android:minHeight="30dip"
+                android:progressDrawable="@drawable/music_bg_bar"
+                android:splitTrack="false"
+                android:thumb="@drawable/thumb_bar" >
+            </SeekBar>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/audio_player_current_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:text="00:00"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/audio_player_total_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="00:00"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_01"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <ImageButton
+                    android:id="@+id/audio_player_album_art"
+                    android:layout_width="50dip"
+                    android:layout_height="50dip"
+                    android:background="@drawable/no_art_small" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <ImageButton
+                    android:id="@+id/bottom_action_bar_previous"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:button="@null"
+                    android:background="@drawable/button_music_play_last" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <CheckBox
+                    android:id="@+id/bottom_action_bar_play"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:background="@drawable/button_music_play"
+                    android:button="@null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <ImageButton
+                    android:id="@+id/bottom_action_bar_next"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/button_music_play_next"
+                    android:button="@null"></ImageButton>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <ImageButton
+                    android:id="@+id/bottom_select_cd_open"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:button="@null"
+                    android:background="@drawable/record_card_more02"></ImageButton>
+            </LinearLayout>
+        </LinearLayout>
+    </com.example.ppmusic.ui.widgets.BottomActionBar>
+
+</LinearLayout>

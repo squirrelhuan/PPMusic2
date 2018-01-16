@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/track_list_context_frame"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/listview_item_height"
+    android:layout_alignParentRight="true"
+    android:background="@drawable/holo_selector"
+    android:clickable="true"
+    android:paddingRight="@dimen/quick_context_padding_right" >
+
+    <ImageView
+        android:id="@+id/quick_context_line"
+        android:layout_width="@dimen/quick_context_line_width"
+        android:layout_height="@dimen/quick_context_line_height"
+        android:layout_gravity="center|left"
+        android:visibility="gone"
+        android:background="@color/transparent_black" />
+
+    <ImageView
+        android:id="@+id/quick_context_tip"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="5dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/btn_bg_song_item_menu"  />
+
+
+</FrameLayout>

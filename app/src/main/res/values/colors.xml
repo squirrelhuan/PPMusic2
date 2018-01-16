@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- A transparent black -->
+    <color name="transparent_black">#aa000000</color>
+    
+     <!-- A semi-transparent dark Holo shade of blue -->
+    <color name="holo_blue_dark">#ff0099cc</color>
+    
+     <!-- Quick Queue line seperator -->
+    <color name="queue_callout_line">#99ffffff</color>
+    
+    <!-- selected tab text -->
+    <color name="selected_tabtext">#bb000000</color>
+    
+    <!-- non selected tab text -->
+    <color name="unselected_tabtext">#77000000</color>
+    
+    
+    <color name="transparent">#00000000</color>
+    <color name="transparent_cc">#cc000000</color>
+    <color name="transparent_white_cc">#ccffffff</color>
+     <color name="transparent_white_33">#33ffffff</color>
+    <color name="transparent_33">#33000000</color>
+    <color name="white">#ffffff</color>
+    <color name="blue">#0000ff</color><!--蓝色 --> 
+    <color name="black">#000000</color>
+    <color name="gray">#646464</color>
+    <color name="light_blue">#18B4ED</color>
+    <!-- 按钮颜色 -->
+    <color name="Button_blue">#4AA0FE</color>
+    <color name="Button_red">#FD4B4B</color>
+    <color name="Button_gray">#666666</color>
+    <color name="button_select">#aa33adff</color>
+    <color name="button_normal">#33adff</color>
+    
+    <color name="red">#FC2C2C</color>
+    <color name="alph_red">#55FC2C2C</color>
+</resources>

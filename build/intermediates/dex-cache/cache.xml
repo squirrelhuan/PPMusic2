@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\huan\.android\build-cache\c45aee604e03ee9570f5d6a5d3f1e25a7615436d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\classes_fcf190d617fe9ba4fc4417223f8860f15df3ed74.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\huan\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.3.2\d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27\picasso-2.3.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\picasso-2.3.2_718cc1ceb638c87ff8819d35f76c865b15e3db2c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\libs\universal-image-loader-1.9.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="dd9eeb557650c4ad7394df23f0f5cf27a7cfc697">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\2\universal-image-loader-1.9.4_625f0c21b921b8f386fb64b2778c977feecc4984\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\libs\fastjson-1.1.45.android.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4d5140a0c8f5e4d0f263cac44dbac1019a908474">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\2\fastjson-1.1.45.android_89d43cd617e8f7648aaa06bd8e94b37e97895b33\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\huan\.android\build-cache\c45aee604e03ee9570f5d6a5d3f1e25a7615436d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_fcf190d617fe9ba4fc4417223f8860f15df3ed74\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\huan\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.3.2\d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27\picasso-2.3.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\picasso-2.3.2_718cc1ceb638c87ff8819d35f76c865b15e3db2c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\libs\fastjson-1.1.45.android.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4d5140a0c8f5e4d0f263cac44dbac1019a908474">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\fastjson-1.1.45.android_89d43cd617e8f7648aaa06bd8e94b37e97895b33.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\libs\universal-image-loader-1.9.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="dd9eeb557650c4ad7394df23f0f5cf27a7cfc697">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.4_625f0c21b921b8f386fb64b2778c977feecc4984.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\huan\.android\build-cache\462baec44613bab6606e5986e76b7e6143ed8943\output\jars\libs\internal_impl-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_6cb7ac8c1ef45255a7bf11fac2e925a45e009441\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\libs\xUtils-2.6.14.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f10c51f3e0732fdeefe6e104279a58e275879b6c">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\2\xUtils-2.6.14_64f3a6ca1d8681584847f90d2f820582f40dd000\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\libs\CGQ-Log1.2.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fb3214ec75296a108e55408f41280a96a24ae384">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\2\CGQ-Log1.2.2_f79cbee82abb30e9c0d64ec12198ce1ca83fee97\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\libs\android-query-0.21.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5ae5b8360446e5294e9c20abc1ef172379654732">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\android-query-0.21.7_65d2b23067275cecf9109b03116795493dba5f74.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\huan\.android\build-cache\bbe804c09d72946e7d883441bb9eca9511233b5e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="894922f67adeaaef51f077a29e315da21a3382d3">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\classes_57524f89ee6e48a072cba587309e2697e4816bc6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\libs\CGQ-Log1.2.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fb3214ec75296a108e55408f41280a96a24ae384">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\CGQ-Log1.2.2_f79cbee82abb30e9c0d64ec12198ce1ca83fee97.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\libs\xUtils-2.6.14.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f10c51f3e0732fdeefe6e104279a58e275879b6c">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\xUtils-2.6.14_64f3a6ca1d8681584847f90d2f820582f40dd000.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\huan\.android\build-cache\462baec44613bab6606e5986e76b7e6143ed8943\output\jars\libs\internal_impl-24.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\internal_impl-24.0.0_6cb7ac8c1ef45255a7bf11fac2e925a45e009441.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\libs\okio-1.6.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\2\okio-1.6.0_a43d0f1d3634006b88c305fdda95089a2d99a4e5\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Program Files\Android\Android Studio\gradle\m2repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\gson-2.2.4_4bdf16c588ee034599c4d23163c8cca82363c4cb.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\huan\.android\build-cache\bbe804c09d72946e7d883441bb9eca9511233b5e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="894922f67adeaaef51f077a29e315da21a3382d3">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_57524f89ee6e48a072cba587309e2697e4816bc6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\libs\android-query-0.21.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5ae5b8360446e5294e9c20abc1ef172379654732">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\2\android-query-0.21.7_65d2b23067275cecf9109b03116795493dba5f74\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Program Files\Android\Android Studio\gradle\m2repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.2.4_4bdf16c588ee034599c4d23163c8cca82363c4cb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_2d3163490980f3aa5302186f22ac1382cbfcc411\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\huan\.android\build-cache\bfc9828dd3da9196c18e1d516beeb0f247faba01\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\classes_a16a494448b328bd793701038d2a9bda24e07365.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\huan\.android\build-cache\88250c199e417d4f4a4460ad5701f6b1c1e7ef62\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\classes_df9fc7df5a3c285892c04f698f63efe6162be86c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\libs\okio-1.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\okio-1.6.0_a43d0f1d3634006b88c305fdda95089a2d99a4e5.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\huan\.android\build-cache\88250c199e417d4f4a4460ad5701f6b1c1e7ef62\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_df9fc7df5a3c285892c04f698f63efe6162be86c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\huan\.android\build-cache\174285116f4388ba835bf204a56e03f2582196fe\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0531ee8f2d7b31fd7bdeaec0242951ffb778d6d9\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\huan\.android\build-cache\462baec44613bab6606e5986e76b7e6143ed8943\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\classes_035a7c05811922fdb885689c173cbaed3e53434e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\huan\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\24.0.0\support-annotations-24.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\support-annotations-24.0.0_d28601dc92f84733485180ca6fcd958257b1c65f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\libs\okhttp-3.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\okhttp-3.2.0_034b3586be58dc4d3467a66b3f0037de28aae3fb.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\huan\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\24.0.0\support-annotations-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.0.0_d28601dc92f84733485180ca6fcd958257b1c65f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\libs\okhttp-3.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\2\okhttp-3.2.0_034b3586be58dc4d3467a66b3f0037de28aae3fb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\huan\.android\build-cache\462baec44613bab6606e5986e76b7e6143ed8943\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_035a7c05811922fdb885689c173cbaed3e53434e\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\huan\.android\build-cache\174285116f4388ba835bf204a56e03f2582196fe\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\pre-dexed\debug\classes_0531ee8f2d7b31fd7bdeaec0242951ffb778d6d9.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="53185e5fc634b6cc2bc17e30d71293b3ea60e6c9">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_1cfb770bce9f32bfe52719262ff418b56dd1ea67\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\huan\.android\build-cache\bfc9828dd3da9196c18e1d516beeb0f247faba01\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="D:\Android\workspace\AndroidStudioProjects\PPMusic-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a16a494448b328bd793701038d2a9bda24e07365\classes.dex" />
+    </item>
+
+</items>

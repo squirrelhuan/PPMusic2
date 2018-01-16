@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rel_music"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        
+        <Button
+            android:id="@+id/button_composer_thought"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:button="@null" >
+        </Button>
+
+        <Button
+            android:id="@+id/button_composer_music"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:padding="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:background="@drawable/record_card_more" >
+        </Button>
+
+        <Button
+            android:id="@+id/button_composer_place"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:background="@drawable/record_card_like_h" >
+        </Button>
+
+        <Button
+            android:id="@+id/button_composer_with"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:background="@drawable/record_card_share" >
+        </Button>
+
+        <Button
+            android:id="@+id/button_composer_camera"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:button="@null" >
+        </Button>
+
+        <com.example.ppmusic.view.impl.LrcView
+            android:id="@+id/lrcView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="280dp" />
+    </RelativeLayout>
+
+      <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="140dp"
+        android:src="#ebebeb" />
+    
+    <ImageView
+        android:id="@+id/iv_music_bar4"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:src="@drawable/music_bar4" />
+
+
+
+    <com.example.ppmusic.view.custom.ImageView_CD
+        android:id="@+id/iv_music_bar3"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/music_bar3" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/music_bar2"
+        />
+
+
+    <ImageView
+        android:id="@+id/iv_music_bar1"
+        android:layout_width="60dp"
+        android:layout_height="240dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/music_bar1" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginRight="2dp"
+        android:layout_alignParentRight="true"
+        android:button="@null"
+        android:src="@drawable/music_bar_005"></ImageView>
+
+    <ImageButton
+        android:id="@+id/iv_music_model"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginRight="3dp"
+        android:layout_alignParentRight="true"
+        android:button="@null"
+        android:background="@color/transparent"></ImageButton>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/music_left" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="100dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/music_right" />
+
+    <TextView
+        android:id="@+id/tv_music_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_music_bar4"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center_horizontal"
+        android:singleLine="true"
+        android:text="歌曲名称"
+        android:maxEms="10"
+        android:visibility="visible"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_singer_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_music_name"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center_horizontal"
+        android:singleLine="true"
+        android:maxEms="12"
+        android:text="歌手名"
+        android:visibility="visible"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <!--
+       <musicplayer.WordView
+       android:id="@+id/text"
+       android:layout_width="match_parent"
+       android:layout_height="240dp"
+       android:layout_below="@+id/music_name" />
+    -->
+
+</RelativeLayout>
