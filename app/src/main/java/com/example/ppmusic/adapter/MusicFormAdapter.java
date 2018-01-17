@@ -18,6 +18,7 @@ import com.example.ppmusic.R;
 import com.example.ppmusic.bean.MusicInfo;
 import com.example.ppmusic.helpers.utils.MusicUtils;
 import com.example.ppmusic.interfaces.FilterListener;
+import com.example.ppmusic.ui.fragment.grid.PPQuickQueueFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +31,13 @@ public class MusicFormAdapter extends BaseAdapter implements Filterable {
 	private Context mContext;
 	private MyFilter filter = null;// 创建MyFilter对象
 	private FilterListener listener = null;// 接口对象
+	private PPQuickQueueFragment mPPQuickQueueFragment;
 
-	public MusicFormAdapter(List<MusicInfo> musicList, Context mContext, FilterListener filterListener){
+	public MusicFormAdapter(List<MusicInfo> musicList, Context mContext,PPQuickQueueFragment ppQuickQueueFragment, FilterListener filterListener){
 		this.mContext = mContext;
 		this.musicList = musicList;
 		this.listener = filterListener;
+		this.mPPQuickQueueFragment = ppQuickQueueFragment;
 	}
 	
 	@Override
@@ -57,20 +60,20 @@ public class MusicFormAdapter extends BaseAdapter implements Filterable {
 		ViewHolder viewHolder;
 		if (convertView == null) {
 			convertView = LayoutInflater.from(mContext).inflate(
-					R.layout.music_item, null);
+					R.layout.music_item_small_01, null);
 			ImageView pImageView = (ImageView) convertView
 					.findViewById(R.id.albumPhoto);
 			TextView pTitle = (TextView) convertView
 					.findViewById(R.id.title);
-			TextView pDuration = (TextView) convertView
-					.findViewById(R.id.duration);
+			ImageView pRemove = (ImageView) convertView
+					.findViewById(R.id.iv_remove_from_list);
 			TextView pArtist = (TextView) convertView
 					.findViewById(R.id.artist);
 
 			ImageView mPeakOne = convertView.findViewById(R.id.peak_one);
 			ImageView mPeakTwo = convertView.findViewById(R.id.peak_two);
 			ImageView mPeakThree = convertView.findViewById(R.id.peak_three);
-			viewHolder = new ViewHolder(pImageView, pTitle, pDuration,
+			viewHolder = new ViewHolder(pImageView, pTitle, pRemove,
 					pArtist,mPeakOne,mPeakTwo,mPeakThree);
 			convertView.setTag(viewHolder);
 		} else {
@@ -79,8 +82,13 @@ public class MusicFormAdapter extends BaseAdapter implements Filterable {
 
 		viewHolder.imageView.setImageResource(R.drawable.audio);
 		viewHolder.title.setText(musicList.get(position).getTitle());
-		viewHolder.duration.setText(FormatHelper.formatDuration(musicList
-				.get(position).getDuration()));
+		viewHolder.mRemove.setTag(position);
+		viewHolder.mRemove.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				mPPQuickQueueFragment.removePlaylistItem((int) view.getTag());
+			}
+		});
 		viewHolder.artist.setText(musicList.get(position).getArtist());
 
 		long currentaudioid = MusicUtils.getCurrentAudioId();
@@ -123,19 +131,18 @@ public class MusicFormAdapter extends BaseAdapter implements Filterable {
 	
 	class ViewHolder {
 		public ViewHolder(ImageView pImageView, TextView pTitle,
-				TextView pDuration, TextView pArtist,ImageView PeakOne,ImageView PeakTwo,ImageView PeakThree) {
+				ImageView piv_remove_from_list, TextView pArtist,ImageView PeakOne,ImageView PeakTwo,ImageView PeakThree) {
 			imageView = pImageView;
 			title = pTitle;
-			duration = pDuration;
+			mRemove = piv_remove_from_list;
 			artist = pArtist;
 			mPeakOne = PeakOne;
 			mPeakTwo = PeakTwo;
 			mPeakThree = PeakThree;
 		}
 
-		ImageView imageView,mPeakOne,mPeakTwo,mPeakThree;
+		ImageView imageView,mPeakOne,mPeakTwo,mPeakThree,mRemove;
 		TextView title;
-		TextView duration;
 		TextView artist;
 	}
 

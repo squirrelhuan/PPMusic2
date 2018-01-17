@@ -50,12 +50,12 @@ import com.example.ppmusic.NowPlayingCursor;
 import com.example.ppmusic.R;
 import com.example.ppmusic.activities.MainActivity;
 import com.example.ppmusic.adapter.MusicAdapter;
+import com.example.ppmusic.adapter.MusicFormAdapter;
 import com.example.ppmusic.bean.MusicInfo;
 import com.example.ppmusic.helpers.AddIdCursorLoader;
 import com.example.ppmusic.helpers.utils.MusicUtils;
 import com.example.ppmusic.interfaces.FilterListener;
 import com.example.ppmusic.service.ApolloService;
-import com.example.ppmusic.ui.adapters.Adapter_PhysicalCharacteristics;
 import com.example.ppmusic.ui.adapters.PPQuickQueueAdapter;
 import com.example.ppmusic.ui.adapters.QuickQueueAdapter;
 import com.example.ppmusic.view.custom.CustomListView;
@@ -64,7 +64,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Andrew Neal
+ * 歌单详细
+ * @author
  */
 public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cursor>,
         OnItemClickListener {
@@ -108,7 +109,7 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
     }
 
     private ListView lvSongs;
-    private MusicAdapter adapter;
+    private MusicFormAdapter adapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.quick_queue_paopao, container, false);
@@ -135,7 +136,7 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
         initSelectCD(root);
 
         lvSongs = (ListView) root.findViewById(R.id.lvSongs);
-        adapter = new MusicAdapter(musicList,getActivity(),new FilterListener() {
+        adapter = new MusicFormAdapter(musicList,getActivity(),this,new FilterListener() {
             // 回调方法获取过滤后的数据
             public void getFilterData(final List<MusicInfo> list) {
                 // 这里可以拿到过滤后数据，所以在这里可以对搜索后的数据进行操作
@@ -183,7 +184,7 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
     private MotionEvent eventc;
     private boolean isClicked;
     private RelativeLayout container;
-    private Adapter_PhysicalCharacteristics adater;
+   // private Adapter_PhysicalCharacteristics adater;
     private void initSelectCD(View root) {
         // 獲取屏幕寬度
         DisplayMetrics dm = getResources().getDisplayMetrics();
@@ -200,8 +201,8 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
         list.add("喜欢");
         list.add("海翻天");
         list.add("安静");
-        adater = new Adapter_PhysicalCharacteristics(getActivity(),list);
-        viewPager.setAdapter(adater);
+       // adater = new Adapter_PhysicalCharacteristics(getActivity(),list);
+       // viewPager.setAdapter(adater);
 
         viewPager.setPageTransformer(false, new ScaleTransformer());
         // 将父节点Layout事件分发给viewpager，否则只能滑动中间的一个view对象
@@ -518,7 +519,7 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
     /**
      * @param which
      */
-    private void removePlaylistItem(int which) {
+    public void removePlaylistItem(int which) {
         mCursor.moveToPosition(which);
         long id = mCursor.getLong(mMediaIdIndex);
         MusicUtils.removeTrack(id);
@@ -552,7 +553,21 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
 
         mCursor = MusicUtils.query(getActivity(), uri, projection, selection.toString(), null,
                 sortOrder);
-        mQuickQueueAdapter.changeCursor(mCursor);
+       // mQuickQueueAdapter.changeCursor(mCursor);
+        int index  = 0;
+        musicList.clear();
+        while (mCursor.moveToNext()) {
+            MusicInfo musicInfo = new MusicInfo();
+            musicInfo.setId(mCursor.getLong(mMediaIdIndex));
+            musicInfo.setArtist(mCursor.getString(mArtistIndex));
+            musicInfo.setTitle(mCursor.getString(mTitleIndex));
+            musicInfo.setAlbum(mCursor.getString(mAlbumIndex));
+            musicInfo.setPosition(index);
+            musicList.add(musicInfo);
+            index++;
+        }
+
+        adapter.notifyDataSetChanged();
     }
 
     /**

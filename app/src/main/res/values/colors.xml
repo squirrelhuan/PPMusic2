@@ -21,6 +21,7 @@
     <color name="transparent_cc">#cc000000</color>
     <color name="transparent_white_cc">#ccffffff</color>
      <color name="transparent_white_33">#33ffffff</color>
+    <color name="transparent_white_22">#22ffffff</color>
     <color name="transparent_33">#33000000</color>
     <color name="white">#ffffff</color>
     <color name="blue">#0000ff</color><!--蓝色 --> 

@@ -357,8 +357,6 @@ public class PPBottomActionBarFragment extends Fragment {
 		}
 	};
 
-
-
 	String artistName;
 
 	/**

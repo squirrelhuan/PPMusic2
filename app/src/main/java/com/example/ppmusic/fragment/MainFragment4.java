@@ -9,20 +9,18 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
-import android.provider.MediaStore;
 import android.provider.MediaStore.Audio;
 import android.provider.MediaStore.Audio.AudioColumns;
 import android.provider.MediaStore.Audio.Genres;
 import android.provider.MediaStore.Audio.Playlists;
 import android.provider.MediaStore.MediaColumns;
+import android.support.design.widget.AppBarLayout;
+import android.support.transition.AutoTransition;
+import android.support.transition.TransitionManager;
 import android.support.transition.TransitionSet;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v7.widget.Toolbar;
-import android.support.transition.AutoTransition;
-import android.support.transition.TransitionManager;
-import android.support.transition.TransitionSet;
-import android.support.design.widget.AppBarLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -39,17 +37,12 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.ppmusic.MusicLoader;
 import com.example.ppmusic.NowPlayingCursor;
 import com.example.ppmusic.R;
 import com.example.ppmusic.activities.MainActivity;
-import com.example.ppmusic.adapter.EditView_withDeleteButton;
 import com.example.ppmusic.adapter.MusicAdapter;
 import com.example.ppmusic.adapter.sortlistview.CharacterParser;
 import com.example.ppmusic.adapter.sortlistview.ClearEditText;
@@ -61,8 +54,6 @@ import com.example.ppmusic.bean.MusicInfo;
 import com.example.ppmusic.helpers.utils.MusicUtils;
 import com.example.ppmusic.interfaces.FilterListener;
 import com.example.ppmusic.service.ApolloService;
-import com.example.ppmusic.ui.adapters.TrackAdapter;
-import com.example.ppmusic.utils.DBUtils;
 import com.example.ppmusic.view.custom.CustomListView;
 import com.example.ppmusic.view.custom.CustomScrollView;
 
@@ -76,7 +67,7 @@ import static com.example.ppmusic.constants.Constants.MIME_TYPE;
 import static com.example.ppmusic.constants.Constants.PLAYLIST_FAVORITES;
 import static com.example.ppmusic.constants.Constants.PLAYLIST_QUEUE;
 
-public class MainFragment3 extends MyBaseFragment implements OnClickListener ,LoaderManager.LoaderCallbacks<Cursor>,OnItemClickListener, AppBarLayout.OnOffsetChangedListener  {
+public class MainFragment4 extends MyBaseFragment implements OnClickListener ,LoaderManager.LoaderCallbacks<Cursor>,OnItemClickListener, AppBarLayout.OnOffsetChangedListener  {
 
 	MainActivity mainActivity;
 
@@ -105,7 +96,7 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 	 */
 	private PinyinComparator pinyinComparator;
 
-
+	EditText tvSearch;
 	LinearLayout mSearchLayout;
 	CustomScrollView mScrollView;
 	boolean isExpand = true;
@@ -137,13 +128,13 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 
 	@Override
 	public View setContentUI(LayoutInflater inflater, ViewGroup container) {
-		return inflater.inflate(R.layout.fragment_main_03, container, false);
+		return inflater.inflate(R.layout.activity_add_friends, container, false);
 	}
 
 	@Override
 	public void init() {
 		mainActivity = (MainActivity) getActivity();
-		
+
 		adapter = new MusicAdapter(musicList,getActivity(),new FilterListener() {
 			// 回调方法获取过滤后的数据
 			public void getFilterData(final List<MusicInfo> list) {
@@ -201,7 +192,7 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 				.findViewById(R.id.title_layout_no_friends);
 
 		mClearEditText = (ClearEditText) findViewById(R.id.filter_edit);
-		//mClearEditText.setFocusable(false);
+		mClearEditText.setFocusable(false);
 		// 实例化汉字转拼音类
 		characterParser = CharacterParser.getInstance();
 
@@ -209,20 +200,20 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 
 		sideBar = (SideBar) findViewById(R.id.sidrbar);
 		dialog = (TextView) findViewById(R.id.dialog);
-		//sideBar.setTextView(dialog);
+		sideBar.setTextView(dialog);
 
 		// 设置右侧触摸监听
-		/*sideBar.setOnTouchingLetterChangedListener(new SideBar.OnTouchingLetterChangedListener() {
+		sideBar.setOnTouchingLetterChangedListener(new SideBar.OnTouchingLetterChangedListener() {
 
 			@Override
 			public void onTouchingLetterChanged(String s) {
-			*/	// 该字母首次出现的位置
+				// 该字母首次出现的位置
 				/*int position = adapter.getPositionForSection(s.charAt(0));
 				if (position != -1) {
 					lvSongs.setSelection(position);
 				}*/
-			//}
-		//});
+			}
+		});
 		//SourceDateList = filledData(sss,musicList_current);
 
 		// 根据a-z进行排序源数据
@@ -233,12 +224,12 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 		// Adapter
 		//mTrackAdapter = new TrackAdapter(getActivity(), R.layout.listview_items, null,
 		//		new String[] {}, new int[] {}, 0);
-		//lvSongs.setOnCreateContextMenuListener(this);
+		lvSongs.setOnCreateContextMenuListener(this);
 
 		// Important!
 		getLoaderManager().initLoader(0, null, this);
 
-		/*tvSearch = (EditText) findViewById(R.id.tv_search);
+		tvSearch = (EditText) findViewById(R.id.tv_search);
 		mSearchLayout = (LinearLayout) findViewById(R.id.ll_search);
 		mScrollView = (CustomScrollView) findViewById(R.id.scrollView);
 		toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -265,25 +256,23 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 			}
 		});
 
-		setListeners();*/
+		setListeners();
 		setHead();
 	}
 
 	private AppBarLayout abl_bar;
 	private View tl_expand, tl_collapse;
 	private View v_expand_mask, v_collapse_mask, v_pay_mask;
-	private String TAG = "CGQ";
 	private int mMaskColor;
-	private EditText tv_search_01,tv_search_02 ,tvSearch;
+	private String TAG = "CGQ";
 	private void setHead() {
-		tv_search_01 =  (EditText) findViewById(R.id.tv_search_expand);
-		tv_search_02 =  (EditText) findViewById(R.id.tv_search_collapse);
 		v_expand_mask = (View) findViewById(R.id.v_expand_mask);
 		v_collapse_mask = (View) findViewById(R.id.v_collapse_mask);
 		tl_expand = (View) findViewById(R.id.tl_expand);
 		tl_collapse = (View) findViewById(R.id.tl_collapse);
 		abl_bar = (AppBarLayout) findViewById(R.id.abl_bar);
 		abl_bar.addOnOffsetChangedListener(this);
+		mMaskColor = getResources().getColor(R.color.alph_red);
 	}
 
 	@Override
@@ -299,62 +288,48 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 				Color.green(mMaskColor), Color.blue(mMaskColor));
 		int maskColorOut = Color.argb(alphaOut*2, Color.red(mMaskColor),
 				Color.green(mMaskColor), Color.blue(mMaskColor));
-
-		if (offset <= dip2px(108)) {
-			//tl_expand.setVisibility(View.VISIBLE);
+		if (offset <= total / 2) {
+			tl_expand.setVisibility(View.VISIBLE);
 			tl_collapse.setVisibility(View.GONE);
-			addListeners(tv_search_01);
-			//v_expand_mask.setBackgroundColor(maskColorInDouble);
+			v_expand_mask.setBackgroundColor(maskColorInDouble);
 			//abl_bar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 		} else {
 			//abl_bar.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-			//tl_expand.setVisibility(View.GONE);
+			tl_expand.setVisibility(View.GONE);
 			tl_collapse.setVisibility(View.VISIBLE);
-			addListeners(tv_search_02);
-			//v_collapse_mask.setBackgroundColor(maskColorOut);
+			v_collapse_mask.setBackgroundColor(maskColorOut);
 		}
 		//  v_pay_mask.setBackgroundColor(maskColorIn);
 	}
 
-	EditText tv_orther ;
-	private void addListeners(EditText tv_Search) {
-		tvSearch = tv_Search;
-		if(tv_Search==tv_search_01){
-			tv_orther = tv_search_02;
-		}else {
-			tv_orther = tv_search_01;
-		}
-		tvSearch.removeTextChangedListener(textWatcher);
-		tv_orther.removeTextChangedListener(textWatcher);
-		tvSearch.setVisibility(View.VISIBLE);
-		tv_orther.setVisibility(View.GONE);
-		tv_orther.setText(tv_Search.getText());
-		tvSearch.addTextChangedListener(textWatcher);
-	}
-	TextWatcher textWatcher = new TextWatcher() {
-		@Override
-		public void onTextChanged(CharSequence s, int start, int before,
-								  int count) {
-			if(adapter != null){
-				adapter.getFilter().filter(s);
+	private void setListeners() {
+		tvSearch.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+									  int count) {
+				if(adapter != null){
+					adapter.getFilter().filter(s);
+				}
 			}
-		}
-		@Override
-		public void beforeTextChanged(CharSequence s, int start, int count,
-									  int after) {
-		}
 
-		@Override
-		public void afterTextChanged(Editable s) {
-		}
-	};
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+										  int after) {
+				// TODO Auto-generated method stub
+			}
 
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+			}
+		});
+	}
 	long testTime = System.currentTimeMillis();
 
 	@Override
 	public void onClick(View v) {
 		Bundle bundle = new Bundle();
-		
+
 	}
 	private void changeToolbarAlpha() {
 		int scrollY = mScrollView.getScrollY();
@@ -449,7 +424,7 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 			if (getArguments() != null) {
 				mPlaylistId = getArguments().getLong(BaseColumns._ID);
 				String mimeType = getArguments().getString(MIME_TYPE);
-				if (Audio.Playlists.CONTENT_TYPE.equals(mimeType)) {
+				if (Playlists.CONTENT_TYPE.equals(mimeType)) {
 					where = new StringBuilder();
 					where.append(AudioColumns.IS_MUSIC + "=1");
 					where.append(" AND " + MediaColumns.TITLE + " != ''");
@@ -491,7 +466,7 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 							sortOrder = Playlists.Members.DEFAULT_SORT_ORDER;
 							break;
 					}
-				} else if (Audio.Genres.CONTENT_TYPE.equals(mimeType)) {
+				} else if (Genres.CONTENT_TYPE.equals(mimeType)) {
 					long genreId = getArguments().getLong(BaseColumns._ID);
 					uri = Genres.Members.getContentUri(EXTERNAL, genreId);
 					projection = new String[] {
@@ -560,10 +535,10 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 		int index  = 0;
 		while (data.moveToNext()) {
 			MusicInfo musicInfo = new MusicInfo();
-			musicInfo.setId(data.getLong(MainFragment3.mMediaIdIndex));
-			musicInfo.setArtist(data.getString(MainFragment3.mArtistIndex));
-			musicInfo.setTitle(data.getString(MainFragment3.mTitleIndex));
-			musicInfo.setAlbum(data.getString(MainFragment3.mAlbumIndex));
+			musicInfo.setId(data.getLong(MainFragment4.mMediaIdIndex));
+			musicInfo.setArtist(data.getString(MainFragment4.mArtistIndex));
+			musicInfo.setTitle(data.getString(MainFragment4.mTitleIndex));
+			musicInfo.setAlbum(data.getString(MainFragment4.mAlbumIndex));
 			musicInfo.setPosition(index);
 			musicList.add(musicInfo);
 			index++;
@@ -573,7 +548,7 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 		//lvSongs.invalidateViews();
 		mCursor = data;
 		adapter.notifyDataSetChanged();
-//		mScrollView.smoothScrollTo(0, 0);
+		mScrollView.smoothScrollTo(0, 0);
 	}
 
 	@Override
@@ -745,7 +720,7 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 	public void isEditMode() {
 		if (getArguments() != null) {
 			String mimetype = getArguments().getString(MIME_TYPE);
-			if (MediaStore.Audio.Playlists.CONTENT_TYPE.equals(mimetype)) {
+			if (Playlists.CONTENT_TYPE.equals(mimetype)) {
 				mPlaylistId = getArguments().getLong(BaseColumns._ID);
 				switch ((int)mPlaylistId) {
 					case (int)PLAYLIST_QUEUE:

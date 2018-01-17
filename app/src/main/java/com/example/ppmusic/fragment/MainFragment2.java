@@ -90,7 +90,7 @@ public class MainFragment2 extends MyBaseFragment implements OnClickListener {
 	private Button buttonCamera, buttonWith, buttonFavorite, buttonMusic,
 			buttonThought;
 
-	private ImageButton mPrev, mNext,mRepeat;
+	private ImageButton mRepeat;
 	private Toast mToast;
 
 	// 自定义LrcView，用来展示歌词
@@ -149,9 +149,7 @@ public class MainFragment2 extends MyBaseFragment implements OnClickListener {
     };
 
     private boolean isPlaying_old = false;
-    
-    private String artistName ;
-    private String trackName ;
+
     /**
      * Update what's playing
      */
@@ -162,10 +160,8 @@ public class MainFragment2 extends MyBaseFragment implements OnClickListener {
 
 		setRepeatButtonImage();
         String artistName = MusicUtils.getArtistName();
-        this.artistName = artistName;
         String albumName = MusicUtils.getAlbumName();
         String trackName = MusicUtils.getTrackName();
-        this.trackName = artistName;
         
         String albumId = String.valueOf(MusicUtils.getCurrentAlbumId());
         tv_music_name.setText(trackName);
@@ -558,9 +554,9 @@ public class MainFragment2 extends MyBaseFragment implements OnClickListener {
 
 	public void initLrc() {
 		// 从assets目录下读取歌词文件内容
-		// String lrc = getFromAssets("test.lrc");
-		// lrc = LrcGet.query("心跳", "王力宏");
-		String lrc = getFromSDCard(file.getAbsoluteFile().toString());
+		 String lrc = getFromAssets("test.lrc");
+		 //lrc = LrcGet.query("心跳", "王力宏");
+		//String lrc = getFromSDCard(file.getAbsoluteFile().toString());
 		// 解析歌词构造器
 		ILrcBuilder builder = new DefaultLrcBuilder();
 		// 解析歌词返回LrcRow集合
@@ -585,6 +581,7 @@ public class MainFragment2 extends MyBaseFragment implements OnClickListener {
 					isManual = false;
 				} else {
 					refreshUI();
+					hasDownload_lrc = true;
 					if (hasDownload_lrc) {
 						initLrc();
 					}
@@ -622,7 +619,7 @@ public class MainFragment2 extends MyBaseFragment implements OnClickListener {
 		// animation(1);
 	}
 
-	private void doAnimation1(boolean checked) {
+/*	private void doAnimation1(boolean checked) {
 		isManual = true;
 		if (checked != MyApp.getNatureBinder().getStatus()) {
 			if (checked) {
@@ -635,7 +632,7 @@ public class MainFragment2 extends MyBaseFragment implements OnClickListener {
 				}
 			}
 		}
-	}
+	}*/
 
 	long testTime = System.currentTimeMillis();
 

@@ -134,7 +134,7 @@ public class PPQuickQueueFragment01 extends Fragment implements LoaderCallbacks<
         });*/
 
         lvSongs = (CustomListView) root.findViewById(R.id.lvSongs);
-        adapter = new MusicFormAdapter(musicList,getActivity(),new FilterListener() {
+        adapter = new MusicFormAdapter(musicList,getActivity(),null,new FilterListener() {
             // 回调方法获取过滤后的数据
             public void getFilterData(final List<MusicInfo> list) {
                 // 这里可以拿到过滤后数据，所以在这里可以对搜索后的数据进行操作

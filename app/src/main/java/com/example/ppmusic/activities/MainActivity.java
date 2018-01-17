@@ -51,7 +51,7 @@ import static com.example.ppmusic.constants.Constants.Action_WallBackGround;
 import static com.example.ppmusic.constants.Constants.Action_WellComeBackGround;
 
 public class MainActivity extends MyBaseActivity implements
-		OnCheckedChangeListener, ServiceConnection {
+		 ServiceConnection {
 
 	private int TIME = 1000;
 	private boolean isManual = false;
@@ -106,7 +106,7 @@ public class MainActivity extends MyBaseActivity implements
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(ApolloService.META_CHANGED);
 
-		handler.postDelayed(runnable, TIME); // 每隔1s执行
+		//handler.postDelayed(runnable, TIME); // 每隔1s执行
 		rl_root = (RelativeLayout) findViewById(R.id.rl_root);
 
 		//PPSelectCDFragment.getInstance().initView();
@@ -150,23 +150,6 @@ public class MainActivity extends MyBaseActivity implements
 
 	float scaleX;
 	float scaleY;
-	Handler handler = new Handler();
-	Runnable runnable = new Runnable() {
-		@Override
-		public void run() {
-			// handler自带方法实现定时器
-			try {
-				handler.postDelayed(this, TIME);
-				if (isManual) {
-					isManual = false;
-				} else {
-					// refreshUI();
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	};
 
 	MainFragment1 mainFragment1;
 	public MainFragment2 mainFragment2;
@@ -238,16 +221,6 @@ public class MainActivity extends MyBaseActivity implements
 		});
 	}
 
-	@Override
-	public void onWindowFocusChanged(boolean hasFocus) {
-		super.onWindowFocusChanged(hasFocus);
-		// 这里来获取容器的宽和高
-		if (hasFocus) {
-			//containerHeight = iv_wallpager.getHeight();
-			//containerWidth = iv_wallpager.getWidth();
-		}
-	}
-
 	public class MyReceiver extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -255,16 +228,12 @@ public class MainActivity extends MyBaseActivity implements
 			if(Action_WallBackGround.equals(action)){
 				if (MyApp.getPictureDrawable("WallpaperUri",R.drawable.background_wall_001) != null) {
 					iv_wallpager.setImageDrawable(MyApp.getPictureDrawable("WallpaperUri",R.drawable.background_wall_001));
+					iv_wallpager.postInvalidate();
 				}
 			}else if(Action_WellComeBackGround.equals(action)){
 				System.out.println("sd卡已卸载");
 			}
 		}
-	}
-
-	@Override
-	public void onCheckedChanged(RadioGroup group, int checkedId) {
-
 	}
 
 	int CurrentItem_A = 1;
@@ -353,6 +322,10 @@ public class MainActivity extends MyBaseActivity implements
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if(viewPager.getCurrentItem()!=1){
+				viewPager.setCurrentItem(1);
+				return true;
+			}
 			if (System.currentTimeMillis() - isExitTime >= 600) {
 				// showToast("再次点击退出程序");
 				isExitTime = System.currentTimeMillis();
