@@ -432,7 +432,7 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
         });
         animatorSet.playTogether(x, y);
         animatorSet.setDuration(200);
-        animatorSet.start();
+        //animatorSet.start();
         iv_cd.setOnTouchListener(new View.OnTouchListener(){
             @Override
             public boolean onTouch(View v, MotionEvent event) {

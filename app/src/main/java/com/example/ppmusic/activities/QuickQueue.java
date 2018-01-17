@@ -45,7 +45,7 @@ public class QuickQueue extends Activity {
     public void finish() {
         super.finish();
         //设置切换动画，从右边进入，左边退出
-        overridePendingTransition(R.anim.bottom_up, R.anim.bottom_down);
+        overridePendingTransition(R.anim.orignal, R.anim.orignal);
     }
 
 }

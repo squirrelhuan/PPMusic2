@@ -31,19 +31,20 @@ public final class R {
         public static final int fade=0x7f040013;
         public static final int hold=0x7f040014;
         public static final int layout_animation=0x7f040015;
-        public static final int peak_meter_1=0x7f040016;
-        public static final int peak_meter_2=0x7f040017;
-        public static final int peak_meter_3=0x7f040018;
-        public static final int peak_white_1=0x7f040019;
-        public static final int peak_white_2=0x7f04001a;
-        public static final int peak_white_3=0x7f04001b;
-        public static final int reverse_anim=0x7f04001c;
-        public static final int rotating=0x7f04001d;
-        public static final int scaling_big=0x7f04001e;
-        public static final int scaling_small=0x7f04001f;
-        public static final int slide_in_left=0x7f040020;
-        public static final int tooltip_enter=0x7f040021;
-        public static final int tooltip_exit=0x7f040022;
+        public static final int orignal=0x7f040016;
+        public static final int peak_meter_1=0x7f040017;
+        public static final int peak_meter_2=0x7f040018;
+        public static final int peak_meter_3=0x7f040019;
+        public static final int peak_white_1=0x7f04001a;
+        public static final int peak_white_2=0x7f04001b;
+        public static final int peak_white_3=0x7f04001c;
+        public static final int reverse_anim=0x7f04001d;
+        public static final int rotating=0x7f04001e;
+        public static final int scaling_big=0x7f04001f;
+        public static final int scaling_small=0x7f040020;
+        public static final int slide_in_left=0x7f040021;
+        public static final int tooltip_enter=0x7f040022;
+        public static final int tooltip_exit=0x7f040023;
     }
     public static final class animator {
         public static final int design_appbar_state_list_animator=0x7f050000;

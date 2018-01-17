@@ -139,7 +139,7 @@ public class PPBottomActionBarFragment extends Fragment {
 				Context context = getActivity();
 				getActivity().startActivity(new Intent(context, QuickQueue.class));
 				//设置切换动画，从右边进入，左边退出
-				getActivity().overridePendingTransition(R.anim.bottom_up, R.anim.bottom_down);
+				getActivity().overridePendingTransition(R.anim.orignal, R.anim.orignal);
 			}
 		});
 
