@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.ppmusic.R;
-import com.example.ppmusic.activities.QuickQueue;
+import com.example.ppmusic.activities.MusicQuickList;
 import com.example.ppmusic.cache.ImageInfo;
 import com.example.ppmusic.helpers.utils.MusicUtils;
 import com.example.ppmusic.helpers.utils.ThemeUtils;
@@ -111,7 +111,7 @@ public class BottomActionBar extends LinearLayout implements OnClickListener, On
     @Override
     public boolean onLongClick(View v) {
         Context context = v.getContext();
-        context.startActivity(new Intent(context, QuickQueue.class));
+        context.startActivity(new Intent(context, MusicQuickList.class));
         return true;
     }
 

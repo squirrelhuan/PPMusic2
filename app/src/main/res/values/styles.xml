@@ -266,8 +266,7 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
-    
-    <!-- QuickQueue -->
+
     <style name="Theme.QuickQueue" parent="@android:style/Theme.Holo.Light">
         <item name="android:windowBackground">@color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>

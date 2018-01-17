@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.ppmusic.FormatHelper;
 import com.example.ppmusic.R;
+import com.example.ppmusic.activities.MusicQuickList;
 import com.example.ppmusic.bean.MusicInfo;
 import com.example.ppmusic.helpers.utils.MusicUtils;
 import com.example.ppmusic.interfaces.FilterListener;
@@ -31,9 +32,9 @@ public class MusicFormAdapter extends BaseAdapter implements Filterable {
 	private Context mContext;
 	private MyFilter filter = null;// 创建MyFilter对象
 	private FilterListener listener = null;// 接口对象
-	private PPQuickQueueFragment mPPQuickQueueFragment;
+	private MusicQuickList mPPQuickQueueFragment;
 
-	public MusicFormAdapter(List<MusicInfo> musicList, Context mContext,PPQuickQueueFragment ppQuickQueueFragment, FilterListener filterListener){
+	public MusicFormAdapter(List<MusicInfo> musicList, Context mContext,MusicQuickList ppQuickQueueFragment, FilterListener filterListener){
 		this.mContext = mContext;
 		this.musicList = musicList;
 		this.listener = filterListener;

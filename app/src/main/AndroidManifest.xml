@@ -150,7 +150,7 @@
 
         <!-- Quickly show the queue -->
         <activity
-            android:name=".activities.QuickQueue"
+            android:name=".activities.MusicQuickList"
             android:excludeFromRecents="true"
             android:launchMode="singleTop"
             android:noHistory="true"

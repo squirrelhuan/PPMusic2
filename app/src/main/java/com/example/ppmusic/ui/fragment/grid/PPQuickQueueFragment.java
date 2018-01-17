@@ -56,6 +56,7 @@ import com.example.ppmusic.helpers.AddIdCursorLoader;
 import com.example.ppmusic.helpers.utils.MusicUtils;
 import com.example.ppmusic.interfaces.FilterListener;
 import com.example.ppmusic.service.ApolloService;
+import com.example.ppmusic.ui.adapters.Adapter_PhysicalCharacteristics;
 import com.example.ppmusic.ui.adapters.PPQuickQueueAdapter;
 import com.example.ppmusic.ui.adapters.QuickQueueAdapter;
 import com.example.ppmusic.view.custom.CustomListView;
@@ -126,17 +127,11 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
         });
         mQueueHolder.addView(iv_cd);
         mQueueHolder.setBackgroundColor(getResources().getColor(R.color.transparent_white_33));
-        /*bottom_select_cd_close = (ImageButton) root.findViewById(R.id.bottom_select_cd_close);
-        bottom_select_cd_close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().finish();
-            }
-        });*/
+
         initSelectCD(root);
 
         lvSongs = (ListView) root.findViewById(R.id.lvSongs);
-        adapter = new MusicFormAdapter(musicList,getActivity(),this,new FilterListener() {
+        /*adapter = new MusicFormAdapter(musicList,getActivity(),this,new FilterListener() {
             // 回调方法获取过滤后的数据
             public void getFilterData(final List<MusicInfo> list) {
                 // 这里可以拿到过滤后数据，所以在这里可以对搜索后的数据进行操作
@@ -158,7 +153,7 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
                     }
                 });
             }
-        });
+        });*/
         lvSongs.setAdapter(adapter);
         lvSongs.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -184,7 +179,7 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
     private MotionEvent eventc;
     private boolean isClicked;
     private RelativeLayout container;
-   // private Adapter_PhysicalCharacteristics adater;
+    private Adapter_PhysicalCharacteristics adater;
     private void initSelectCD(View root) {
         // 獲取屏幕寬度
         DisplayMetrics dm = getResources().getDisplayMetrics();
@@ -202,7 +197,7 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
         list.add("海翻天");
         list.add("安静");
        // adater = new Adapter_PhysicalCharacteristics(getActivity(),list);
-       // viewPager.setAdapter(adater);
+        viewPager.setAdapter(adater);
 
         viewPager.setPageTransformer(false, new ScaleTransformer());
         // 将父节点Layout事件分发给viewpager，否则只能滑动中间的一个view对象
@@ -307,7 +302,6 @@ public class PPQuickQueueFragment extends Fragment implements LoaderCallbacks<Cu
         int itemWidth = (int) (length * density);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(gridviewWidth, LinearLayout.LayoutParams.FILL_PARENT);
-
 
         return new AddIdCursorLoader(getActivity(), uri, projection, selection.toString(), null,
                 sortOrder);

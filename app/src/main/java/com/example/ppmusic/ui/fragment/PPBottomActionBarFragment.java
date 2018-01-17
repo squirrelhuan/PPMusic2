@@ -4,7 +4,6 @@
 
 package com.example.ppmusic.ui.fragment;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,7 +14,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.RemoteException;
 import android.os.SystemClock;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,9 +29,8 @@ import android.widget.Toast;
 
 import com.example.ppmusic.R;
 import com.example.ppmusic.activities.MusicDetailActivity;
-import com.example.ppmusic.activities.QuickQueue;
+import com.example.ppmusic.activities.MusicQuickList;
 import com.example.ppmusic.cache.ImageInfo;
-import com.example.ppmusic.helpers.utils.ApolloUtils;
 import com.example.ppmusic.helpers.utils.MusicUtils;
 import com.example.ppmusic.helpers.utils.ThemeUtils;
 import com.example.ppmusic.service.ApolloService;
@@ -43,7 +40,6 @@ import com.example.ppmusic.ui.widgets.BottomActionBar;
 import static com.example.ppmusic.constants.Constants.SIZE_THUMB;
 import static com.example.ppmusic.constants.Constants.SRC_FIRST_AVAILABLE;
 import static com.example.ppmusic.constants.Constants.TYPE_ALBUM;
-import static com.example.ppmusic.service.ApolloService.SHUFFLE_NONE;
 
 /**
  * @author Andrew Neal
@@ -137,7 +133,7 @@ public class PPBottomActionBarFragment extends Fragment {
 				//toggleShuffle();
 				//cycleRepeat();
 				Context context = getActivity();
-				getActivity().startActivity(new Intent(context, QuickQueue.class));
+				getActivity().startActivity(new Intent(context, MusicQuickList.class));
 				//设置切换动画，从右边进入，左边退出
 				getActivity().overridePendingTransition(R.anim.orignal, R.anim.orignal);
 			}

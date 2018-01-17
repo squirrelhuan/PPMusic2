@@ -122,6 +122,7 @@
     <string name="delete_playlist">从歌单中删除</string>
     <string name="search">搜索</string>
     <string name="remove">从歌单中移除</string>
+    <string name="remove_all">移除全部</string>
     <string name="image_edit_gallery">New image from gallery</string>
     <string name="image_edit_file">Original image from file</string>
     <string name="image_edit_lastfm">Fetch image from last.fm</string>

@@ -5,107 +5,125 @@
     build-mode="COLD"
     density="xxhdpi"
     format="10"
-    ir-eligibility="COMPATIBLE"
+    ir-eligibility="METHOD_DELETED"
     plugin-version="3.0.1"
-    timestamp="1516184712223"
-    token="-7850576968507712831"
+    timestamp="1516209661190"
+    token="-8971519556795260017"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="274" />
+        duration="968" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="6" />
+        duration="28" />
     <task
         name="verifier"
-        duration="10" />
+        duration="11" />
 
     <artifact
-        location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+        location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
         type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1516180926644"
+        timestamp="1516202670423"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\outputs\apk\debug\app-debug.apk"
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\outputs\apk\debug\app-debug.apk"
             type="SPLIT_MAIN" />
         <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
     </build>
     <build
         build-mode="COLD"
         ir-eligibility="R_CLASS_CHANGE"
-        timestamp="1516184546653"
+        timestamp="1516203474624"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="R_CLASS_CHANGE"
+        timestamp="1516203814436"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\outputs\apk\debug\app-debug.apk"
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\outputs\apk\debug\app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1516184618186"
+        ir-eligibility="CLASS_ADDED"
+        timestamp="1516204346617"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1516184712223"
+        ir-eligibility="METHOD_DELETED"
+        timestamp="1516209661190"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\work\android\workspace\PPMusic-master\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            location="D:\Android\workspace\AndroidStudioProjects\PPMusic2\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
     </build>
 
