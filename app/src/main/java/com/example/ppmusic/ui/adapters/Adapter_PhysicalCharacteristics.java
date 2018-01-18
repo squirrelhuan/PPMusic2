@@ -51,26 +51,29 @@ public class Adapter_PhysicalCharacteristics extends PagerAdapter {
         viewHolder.iv_icon = view.findViewById(R.id.iv_icon);
         viewHolder.tv_name = view.findViewById(R.id.tv_name);
         viewHolder.tv_play_all = view.findViewById(R.id.tv_play_all);
-        if(qiGuanModels!=null&&qiGuanModels.get(position)!=null){
-        //viewHolder.iv_icon.setImageResource(qiGuanModels.get(position).getResId());
-        viewHolder.tv_name.setText(qiGuanModels.get(position).getName());
-        viewHolder.tv_play_all.setTag(qiGuanModels.get(position).getId());
-        viewHolder.tv_play_all.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                   long id = (long)view.getTag();
-                    long[] list = MusicUtils.getSongListForPlaylist(mContext,
-                            id);
-                    MusicUtils.playAll(mContext, list, 0);
-                }
-            });
-       // viewHolder.tv_valuestr.setTextColor(mContext.getResources().getColor((!qiGuanModels.get(position).getValueStr().contains("-")) ? R.color.jps_green_01 : R.color.jps_red_01));
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-
+        viewHolder.tv_play_sort = view.findViewById(R.id.tv_play_sort);
+        if (qiGuanModels != null && qiGuanModels.get(position) != null) {
+            //viewHolder.iv_icon.setImageResource(qiGuanModels.get(position).getResId());
+            viewHolder.tv_name.setText(qiGuanModels.get(position).getName());
+            if (qiGuanModels.get(position).getId() == -1) {
+                viewHolder.tv_play_all.setVisibility(View.GONE);
+                viewHolder.tv_play_sort.setVisibility(View.VISIBLE);
+            } else {
+                viewHolder.tv_play_sort.setVisibility(View.GONE);
+                viewHolder.tv_play_all.setVisibility(View.VISIBLE);
+                viewHolder.tv_play_all.setTag(qiGuanModels.get(position).getId());
+                viewHolder.tv_play_all.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        long id = (long) view.getTag();
+                        long[] list = MusicUtils.getSongListForPlaylist(mContext,
+                                id);
+                        MusicUtils.playAll(mContext, list, 0);
+                    }
+                });
             }
-        });}
+        }
+        // viewHolder.tv_valuestr.setTextColor(mContext.getResources().getColor((!qiGuanModels.get(position).getValueStr().contains("-")) ? R.color.jps_green_01 : R.color.jps_red_01));
         //AnimationUtil.addScaleAnimition(view,null);
         container.addView(view);
         return view;
@@ -83,6 +86,6 @@ public class Adapter_PhysicalCharacteristics extends PagerAdapter {
 
     class ViewHolder {
         ImageView iv_icon;
-        TextView tv_name, tv_play_all;
+        TextView tv_name, tv_play_all, tv_play_sort;
     }
 }

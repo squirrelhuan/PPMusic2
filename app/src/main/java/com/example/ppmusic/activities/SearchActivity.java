@@ -22,7 +22,7 @@ import com.example.ppmusic.MyApp;
 import com.example.ppmusic.R;
 import com.example.ppmusic.adapter.EditView_withDeleteButton;
 import com.example.ppmusic.adapter.SongListAdapter_search;
-import com.example.ppmusic.base.MyBaseActivity;
+import com.example.ppmusic.base.BaseActivity;
 import com.example.ppmusic.bean.MusicInfo;
 import com.example.ppmusic.bean.TTdongting.Data;
 import com.example.ppmusic.utils.DBUtils;
@@ -32,7 +32,7 @@ import com.example.ppmusic.view.custom.PullScrollView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchActivity extends MyBaseActivity implements OnClickListener,
+public class SearchActivity extends BaseActivity implements OnClickListener,
 		PullScrollView.OnTurnListener {
 
 	private PullScrollView mScrollView;
@@ -52,15 +52,6 @@ public class SearchActivity extends MyBaseActivity implements OnClickListener,
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_music_search);
 
-		if (Build.VERSION.SDK_INT >= 21) {
-			View decorView = getWindow().getDecorView();
-			int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-					| View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-			decorView.setSystemUiVisibility(option);
-			getWindow().setStatusBarColor(Color.TRANSPARENT);
-		}
-		ActionBar actionBar = getSupportActionBar();
-		actionBar.hide();
 		initView();
 		init();
 	}

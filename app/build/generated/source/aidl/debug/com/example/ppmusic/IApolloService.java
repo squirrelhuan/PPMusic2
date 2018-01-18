@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: D:\\Android\\workspace\\AndroidStudioProjects\\PPMusic2\\app\\src\\main\\aidl\\com\\example\\ppmusic\\IApolloService.aidl
+ * Original file: C:\\work\\android\\workspace\\PPMusic2\\app\\src\\main\\aidl\\com\\example\\ppmusic\\IApolloService.aidl
  */
 package com.example.ppmusic;
 public interface IApolloService extends android.os.IInterface

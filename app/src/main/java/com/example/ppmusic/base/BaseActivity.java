@@ -3,6 +3,7 @@ package com.example.ppmusic.base;
 import com.example.ppmusic.MyApp;
 import com.example.ppmusic.R;
 import com.example.ppmusic.interfaces.TitleInterface;
+import com.example.ppmusic.utils.StatusBarUtil;
 import com.example.ppmusic.utils.ToastUtils;
 import com.lidroid.xutils.ViewUtils;
 
@@ -18,9 +19,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-public abstract class MyBaseActivity extends AppCompatActivity implements TitleInterface {
+public abstract class BaseActivity extends AppCompatActivity implements TitleInterface {
 
-	protected static final String TAG = MyBaseActivity.class.getName();
+	protected static final String TAG = BaseActivity.class.getName();
 	public ProgressDialog progressDialog;
 	MyApp app;
 	ToastUtils toastUtils;
@@ -29,6 +30,8 @@ public abstract class MyBaseActivity extends AppCompatActivity implements TitleI
 
 	public void setContentView(int layoutResID) {
 		super.setContentView(layoutResID);
+		StatusBarUtil.transparencyBar(this);
+		StatusBarUtil.StatusBarLightMode(this);
 		ViewUtils.inject(this);
 		app = (MyApp) MyApp.getInstance();
 		toastUtils = app.getToastUtils();

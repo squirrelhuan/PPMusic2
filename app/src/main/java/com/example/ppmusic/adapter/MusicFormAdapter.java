@@ -33,8 +33,18 @@ public class MusicFormAdapter extends BaseAdapter implements Filterable {
 	private MyFilter filter = null;// 创建MyFilter对象
 	private FilterListener listener = null;// 接口对象
 	private MusicQuickList mPPQuickQueueFragment;
+	private int songSheetId = MusicQuickList.SongSheet_Current_Tag;
 
-	public MusicFormAdapter(List<MusicInfo> musicList, Context mContext,MusicQuickList ppQuickQueueFragment, FilterListener filterListener){
+	public int getSongSheetId() {
+		return songSheetId;
+	}
+
+	public void setSongSheetId(int songSheetId) {
+		this.songSheetId = songSheetId;
+		this.notifyDataSetChanged();
+	}
+
+	public MusicFormAdapter(List<MusicInfo> musicList, Context mContext, MusicQuickList ppQuickQueueFragment, FilterListener filterListener){
 		this.mContext = mContext;
 		this.musicList = musicList;
 		this.listener = filterListener;
@@ -83,11 +93,11 @@ public class MusicFormAdapter extends BaseAdapter implements Filterable {
 
 		viewHolder.imageView.setImageResource(R.drawable.audio);
 		viewHolder.title.setText(musicList.get(position).getTitle());
-		viewHolder.mRemove.setTag(position);
+		viewHolder.mRemove.setTag(musicList.get(position).getId());
 		viewHolder.mRemove.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				mPPQuickQueueFragment.removePlaylistItem((int) view.getTag());
+				mPPQuickQueueFragment.removePlaylistItem(getSongSheetId(),(long) view.getTag());
 			}
 		});
 		viewHolder.artist.setText(musicList.get(position).getArtist());

@@ -23,7 +23,7 @@ import android.widget.Toast;
 import com.example.ppmusic.IApolloService;
 import com.example.ppmusic.MusicLoader;
 import com.example.ppmusic.R;
-import com.example.ppmusic.base.MyBaseActivity;
+import com.example.ppmusic.base.BaseActivity;
 import com.example.ppmusic.bean.MusicInfo;
 import com.example.ppmusic.helpers.utils.MusicUtils;
 import com.example.ppmusic.service.ApolloService;
@@ -35,7 +35,7 @@ import com.example.ppmusic.view.custom.PullScrollView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MusicDetailActivity extends MyBaseActivity implements
+public class MusicDetailActivity extends BaseActivity implements
 		OnCheckedChangeListener, PullScrollView.OnTurnListener,
 		ServiceConnection {
 
@@ -55,16 +55,6 @@ public class MusicDetailActivity extends MyBaseActivity implements
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_music_detail);
-
-		if (Build.VERSION.SDK_INT >= 21) {
-			View decorView = getWindow().getDecorView();
-			int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-					| View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-			decorView.setSystemUiVisibility(option);
-			getWindow().setStatusBarColor(Color.TRANSPARENT);
-		}
-		ActionBar actionBar = getSupportActionBar();
-		actionBar.hide();
 
 		bundle = getIntent().getExtras();
 		if (bundle != null && bundle.containsKey("Title")) {

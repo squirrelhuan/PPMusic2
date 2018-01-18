@@ -5,6 +5,10 @@
     android:versionCode="1"
     android:versionName="1.0">
 
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="26" />
+
     <!-- 访问网络和操作SD卡 加入的两个权限配置 -->
     <!-- This is used for Last.fm and Google Music -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -25,30 +29,25 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
-
-    <uses-sdk
-        android:minSdkVersion="19"
-        android:targetSdkVersion="26" />
-
     <application
-        android:name="MyApp"
+        android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher_pp"
         android:label="@string/app_name"
         android:launchMode="singleTask"
         android:taskAffinity="apollo.task.music"
-        android:theme="@style/AppTheme">
-
+        android:theme="@style/StartAppTheme">
         <meta-data
             android:name="android.app.default_searchable"
             android:value=".activities.QueryBrowserActivity" />
 
         <activity
-            android:name="com.example.ppmusic.activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask">
             <intent-filter>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:mimeType="audio/*"
                     android:scheme="http" />
@@ -57,19 +56,20 @@
                     android:scheme="file" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.ppmusic.activities.LauncherActivity">
+        <activity android:name=".activities.LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.ppmusic.activities.MusicListActivity"></activity>
-        <activity android:name="com.example.ppmusic.activities.MusicDetailActivity"></activity>
-        <activity android:name="com.example.ppmusic.activities.SearchActivity"></activity>
-        <activity android:name="com.example.ppmusic.activities.SettingActivity"></activity>
+        <activity android:name=".activities.MusicListActivity" />
+        <activity android:name=".activities.MusicDetailActivity" />
+        <activity android:name=".activities.SearchActivity" />
+        <activity android:name=".activities.SettingActivity" />
+        <activity android:name=".activities.SongSheetListActivity" />
 
-         <service android:name="com.example.ppmusic.service.CMusicService" >
-        </service>
+        <service android:name=".service.CMusicService"></service>
         <!-- Serach -->
         <activity
             android:name=".activities.QueryBrowserActivity"
@@ -162,33 +162,33 @@
             android:label="@string/settings"
             android:logo="@drawable/ic_launcher" />
         <activity
-             android:name=".menu.PlaylistDialog"
-             android:label="@string/rename_playlist"
-             android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar" >
-             <intent-filter>
-                 <action android:name="com.example.ppmusic.CREATE_PLAYLIST" />
+            android:name=".menu.PlaylistDialog"
+            android:label="@string/rename_playlist"
+            android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar">
+            <intent-filter>
+                <action android:name="com.example.ppmusic.CREATE_PLAYLIST" />
 
-                 <category android:name="android.intent.category.DEFAULT" />
-             </intent-filter>
-             <intent-filter>
-                 <action android:name="com.example.ppmusic.RENAME_PLAYLIST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.example.ppmusic.RENAME_PLAYLIST" />
 
-                 <category android:name="android.intent.category.DEFAULT" />
-             </intent-filter>
-         </activity>
-         <activity
-             android:name="com.example.ppmusic.menu.PlaylistPicker"
-             android:icon="@drawable/ic_launcher"
-             android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar" >
-             <intent-filter>
-                 <action android:name="com.example.ppmusic.ADD_TO_PLAYLIST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".menu.PlaylistPicker"
+            android:icon="@drawable/ic_launcher"
+            android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar">
+            <intent-filter>
+                <action android:name="com.example.ppmusic.ADD_TO_PLAYLIST" />
 
-                 <category android:name="android.intent.category.DEFAULT" />
-             </intent-filter>
-         </activity>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <!-- 1x1 App Widget -->
         <receiver
-            android:name="com.example.ppmusic.app.widgets.AppWidget11"
+            android:name=".app.widgets.AppWidget11"
             android:label="@string/apollo_1x1">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -200,7 +200,7 @@
         </receiver>
         <!-- 4x1 App Widget -->
         <receiver
-            android:name="com.example.ppmusic.app.widgets.AppWidget41"
+            android:name=".app.widgets.AppWidget41"
             android:label="@string/apollo_4x1">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -212,7 +212,7 @@
         </receiver>
         <!-- 4x2 App Widget -->
         <receiver
-            android:name="com.example.ppmusic.app.widgets.AppWidget42"
+            android:name=".app.widgets.AppWidget42"
             android:label="@string/apollo_4x2">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -224,7 +224,7 @@
         </receiver>
         <!-- 4x4 App Widget -->
         <receiver
-            android:name="com.example.ppmusic.app.widgets.AppWidget44"
+            android:name=".app.widgets.AppWidget44"
             android:label="@string/apollo_4x4">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -235,7 +235,7 @@
                 android:resource="@xml/appwidget4x4_info" />
         </receiver>
         <!-- Media button receiver -->
-        <receiver android:name="com.example.ppmusic.service.MediaButtonIntentReceiver">
+        <receiver android:name=".service.MediaButtonIntentReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
                 <action android:name="android.media.AUDIO_BECOMING_NOISY" />
@@ -243,10 +243,10 @@
         </receiver>
         <!-- Music service -->
         <service
-            android:name="com.example.ppmusic.service.ApolloService"
+            android:name=".service.ApolloService"
+            android:enabled="true"
+            android:exported="true"
             android:label="@string/app_name"
-            android:exported = "true"
-            android:enabled = "true"
             android:process=":main" />
 
     </application>

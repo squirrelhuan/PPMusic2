@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:background="@color/transparent">
+    android:layout_marginBottom="20dp"
+    android:layout_marginTop="5dp"
+    android:background="@drawable/background_wall_001">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,7 +67,7 @@
             android:layout_height="0dp"
             android:layout_weight="2.5"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/select_cd_bg_02">
+            android:background="@color/transparent_white_cc">
 
             <ListView
                 android:id="@+id/lvSongs"

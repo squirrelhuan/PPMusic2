@@ -5,15 +5,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -39,7 +36,7 @@ import com.example.ppmusic.adapter.LinearLayout_withRaidoButton;
 import com.example.ppmusic.adapter.SongListAdapter_search;
 import com.example.ppmusic.adapter.ToggleButton;
 import com.example.ppmusic.adapter.ToggleButton.OnToggleChanged;
-import com.example.ppmusic.base.MyBaseActivity;
+import com.example.ppmusic.base.BaseActivity;
 import com.example.ppmusic.bean.TTdongting.Data;
 import com.example.ppmusic.constants.Constants;
 import com.example.ppmusic.utils.FileSizeUtil;
@@ -61,7 +58,7 @@ import static com.example.ppmusic.constants.Constants.Action_WellComeBackGround;
  * @author SquirrelNuts
  * 
  */
-public class SettingActivity extends MyBaseActivity implements OnClickListener {
+public class SettingActivity extends BaseActivity implements OnClickListener {
 
 	LinearLayout ll_only_wifi;// wifi模式
 	LinearLayout ll_net_play;// 是否数据流量播放
@@ -89,16 +86,6 @@ public class SettingActivity extends MyBaseActivity implements OnClickListener {
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_music_setting);
-
-		if (Build.VERSION.SDK_INT >= 21) {
-			View decorView = getWindow().getDecorView();
-			int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-					| View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-			decorView.setSystemUiVisibility(option);
-			getWindow().setStatusBarColor(Color.TRANSPARENT);
-		}
-		ActionBar actionBar = getSupportActionBar();
-		actionBar.hide();
 
 		init();
 	}

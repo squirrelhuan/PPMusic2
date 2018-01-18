@@ -11,7 +11,6 @@ import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -27,21 +26,18 @@ import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 
 import com.example.ppmusic.IApolloService;
 import com.example.ppmusic.MyApp;
 import com.example.ppmusic.R;
 import com.example.ppmusic.adapter.FragmentAdapter;
-import com.example.ppmusic.base.MyBaseActivity;
+import com.example.ppmusic.base.BaseActivity;
 import com.example.ppmusic.fragment.MainFragment1;
 import com.example.ppmusic.fragment.MainFragment2;
 import com.example.ppmusic.fragment.MainFragment3;
 import com.example.ppmusic.helpers.utils.MusicUtils;
 import com.example.ppmusic.service.ApolloService;
-import com.example.ppmusic.service.CMusicService;
 import com.example.ppmusic.service.ServiceToken;
 
 import java.util.ArrayList;
@@ -50,7 +46,7 @@ import java.util.List;
 import static com.example.ppmusic.constants.Constants.Action_WallBackGround;
 import static com.example.ppmusic.constants.Constants.Action_WellComeBackGround;
 
-public class MainActivity extends MyBaseActivity implements
+public class MainActivity extends BaseActivity implements
 		 ServiceConnection {
 
 	private int TIME = 1000;
@@ -97,8 +93,8 @@ public class MainActivity extends MyBaseActivity implements
 			decorView.setSystemUiVisibility(option);
 			getWindow().setStatusBarColor(Color.TRANSPARENT);
 		}
-		ActionBar actionBar = getSupportActionBar();
-		actionBar.hide();
+		//ActionBar actionBar = getSupportActionBar();
+		//actionBar.hide();
 
 		// Bind to Service
 		mToken = MusicUtils.bindToService(this, this);

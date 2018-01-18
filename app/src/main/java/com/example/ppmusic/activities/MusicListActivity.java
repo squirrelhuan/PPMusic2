@@ -6,21 +6,15 @@ import java.util.List;
 import com.example.ppmusic.IApolloService;
 import com.example.ppmusic.MusicLoader;
 import com.example.ppmusic.R;
-import com.example.ppmusic.adapter.DampView;
 import com.example.ppmusic.adapter.FragmentAdapter;
-import com.example.ppmusic.adapter.SongListAdapter01;
-import com.example.ppmusic.base.MyBaseActivity;
+import com.example.ppmusic.base.BaseActivity;
 import com.example.ppmusic.bean.MusicInfo;
 import com.example.ppmusic.fragment.Fragment_SongList01;
 import com.example.ppmusic.fragment.Fragment_SongList02;
 import com.example.ppmusic.fragment.Fragment_SongList03;
-import com.example.ppmusic.fragment.MainFragment1;
-import com.example.ppmusic.fragment.MainFragment2;
-import com.example.ppmusic.fragment.MainFragment3;
 import com.example.ppmusic.helpers.utils.MusicUtils;
 import com.example.ppmusic.service.ApolloService;
 import com.example.ppmusic.service.ServiceToken;
-import com.example.ppmusic.ui.fragment.list.CopyOfRecentlyAddedFragment;
 import com.example.ppmusic.utils.DBUtils;
 import com.example.ppmusic.view.custom.JellyBall;
 import com.example.ppmusic.view.custom.PullScrollView;
@@ -38,8 +32,6 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.ActionBar;
 import android.view.Gravity;
 import android.view.View;
-import android.view.animation.AnimationUtils;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -49,7 +41,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MusicListActivity extends MyBaseActivity implements
+public class MusicListActivity extends BaseActivity implements
 		OnCheckedChangeListener, PullScrollView.OnTurnListener, ServiceConnection {
 
 	ViewPager viewPager;
@@ -70,16 +62,6 @@ public class MusicListActivity extends MyBaseActivity implements
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_music_list);
-
-		if (Build.VERSION.SDK_INT >= 21) {
-			View decorView = getWindow().getDecorView();
-			int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-					| View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-			decorView.setSystemUiVisibility(option);
-			getWindow().setStatusBarColor(Color.TRANSPARENT);
-		}
-		ActionBar actionBar = getSupportActionBar();
-		actionBar.hide();
 
 		bundle = getIntent().getExtras();
 		if (bundle.containsKey("Title")) {

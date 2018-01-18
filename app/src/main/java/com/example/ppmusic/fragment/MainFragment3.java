@@ -61,6 +61,7 @@ import com.example.ppmusic.bean.MusicInfo;
 import com.example.ppmusic.helpers.utils.MusicUtils;
 import com.example.ppmusic.interfaces.FilterListener;
 import com.example.ppmusic.service.ApolloService;
+import com.example.ppmusic.ui.adapters.RecentlyAddedAdapter;
 import com.example.ppmusic.ui.adapters.TrackAdapter;
 import com.example.ppmusic.utils.DBUtils;
 import com.example.ppmusic.view.custom.CustomListView;
@@ -134,6 +135,7 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 
 	// Audio columns
 	public static int mTitleIndex, mAlbumIndex, mArtistIndex, mMediaIdIndex;
+	private RecentlyAddedAdapter mRecentlyAddedAdapter;
 
 	@Override
 	public View setContentUI(LayoutInflater inflater, ViewGroup container) {
@@ -169,6 +171,12 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 		});
 		lvSongs = rootView.findViewById(R.id.lvSongs);
 		lvSongs.setAdapter(adapter);
+		lvSongs.setOnCreateContextMenuListener(this);
+		mRecentlyAddedAdapter = new RecentlyAddedAdapter(getActivity(),
+				R.layout.item_song_list02 /* R.layout.listview_items */, null,
+				new String[] {}, new int[] {}, 0, lvSongs);
+
+		//lvSongs.setAdapter(mRecentlyAddedAdapter);
 		lvSongs.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -568,6 +576,7 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 			musicList.add(musicInfo);
 			index++;
 		}
+		//mRecentlyAddedAdapter.changeCursor(data);
 		Log.i("CGQ","size="+musicList.size());
 		//mTrackAdapter.changeCursor(data);
 		//lvSongs.invalidateViews();
@@ -611,11 +620,14 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 
 		try {
 			mSelectedId = mCursor.getLong(mMediaIdIndex);
+			mSelectedId =adapter.getItemId(mSelectedPosition);
 		} catch (IllegalArgumentException ex) {
 			mSelectedId = mi.id;
+			mSelectedId =adapter.getItemId(mSelectedPosition);
 		}
 
 		String title = mCursor.getString(mTitleIndex);
+		title = ((MusicInfo)adapter.getItem(mSelectedPosition)).getTitle();
 		menu.setHeaderTitle(title);
 		super.onCreateContextMenu(menu, v, menuInfo);
 	}
