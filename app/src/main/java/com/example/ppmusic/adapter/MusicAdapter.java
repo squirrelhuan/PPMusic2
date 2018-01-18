@@ -54,6 +54,17 @@ public class MusicAdapter extends BaseAdapter implements Filterable {
 	public long getItemId(int position) {
 		return musicList.get(position).getId();
 	}
+
+	/**
+	 * Used to quickly our the ContextMenu
+	 */
+	private final View.OnClickListener showContextMenu = new View.OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			v.showContextMenu();
+		}
+	};
+
 	@SuppressWarnings("ResourceType")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -65,15 +76,15 @@ public class MusicAdapter extends BaseAdapter implements Filterable {
 					.findViewById(R.id.albumPhoto);
 			TextView pTitle = (TextView) convertView
 					.findViewById(R.id.title);
-			TextView pDuration = (TextView) convertView
-					.findViewById(R.id.duration);
+			ImageView iv_more = (ImageView) convertView
+					.findViewById(R.id.iv_more);
 			TextView pArtist = (TextView) convertView
 					.findViewById(R.id.artist);
 
 			ImageView mPeakOne = convertView.findViewById(R.id.peak_one);
 			ImageView mPeakTwo = convertView.findViewById(R.id.peak_two);
 			ImageView mPeakThree = convertView.findViewById(R.id.peak_three);
-			viewHolder = new ViewHolder(pImageView, pTitle, pDuration,
+			viewHolder = new ViewHolder(pImageView, pTitle, iv_more,
 					pArtist,mPeakOne,mPeakTwo,mPeakThree);
 			convertView.setTag(viewHolder);
 		} else {
@@ -82,8 +93,7 @@ public class MusicAdapter extends BaseAdapter implements Filterable {
 
 		viewHolder.imageView.setImageResource(R.drawable.audio);
 		viewHolder.title.setText(musicList.get(position).getTitle());
-		viewHolder.duration.setText(FormatHelper.formatDuration(musicList
-				.get(position).getDuration()));
+		viewHolder.iv_more.setOnClickListener(showContextMenu);
 		viewHolder.artist.setText(musicList.get(position).getArtist());
 
 		long currentaudioid = MusicUtils.getCurrentAudioId();
@@ -126,19 +136,18 @@ public class MusicAdapter extends BaseAdapter implements Filterable {
 	
 	class ViewHolder {
 		public ViewHolder(ImageView pImageView, TextView pTitle,
-				TextView pDuration, TextView pArtist,ImageView PeakOne,ImageView PeakTwo,ImageView PeakThree) {
+				ImageView piv_more, TextView pArtist,ImageView PeakOne,ImageView PeakTwo,ImageView PeakThree) {
 			imageView = pImageView;
 			title = pTitle;
-			duration = pDuration;
+			iv_more = piv_more;
 			artist = pArtist;
 			mPeakOne = PeakOne;
 			mPeakTwo = PeakTwo;
 			mPeakThree = PeakThree;
 		}
 
-		ImageView imageView,mPeakOne,mPeakTwo,mPeakThree;
+		ImageView imageView,mPeakOne,mPeakTwo,mPeakThree,iv_more;
 		TextView title;
-		TextView duration;
 		TextView artist;
 	}
 

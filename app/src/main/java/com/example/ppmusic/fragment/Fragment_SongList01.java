@@ -4,52 +4,31 @@ import static com.example.ppmusic.constants.Constants.NUMWEEKS;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
-import com.example.ppmusic.MusicLoader;
-import com.example.ppmusic.MyApp;
 import com.example.ppmusic.NowPlayingCursor;
 import com.example.ppmusic.R;
 import com.example.ppmusic.activities.MainActivity;
 import com.example.ppmusic.activities.MusicListActivity;
 import com.example.ppmusic.adapter.PullToZoomListView;
-import com.example.ppmusic.adapter.SongListAdapter01;
 import com.example.ppmusic.base.MyBaseFragment;
 import com.example.ppmusic.bean.MusicInfo;
-import com.example.ppmusic.helpers.AddIdCursorLoader;
 import com.example.ppmusic.helpers.CopyOfAddIdCursorLoader;
 import com.example.ppmusic.helpers.utils.MusicUtils;
 import com.example.ppmusic.service.ApolloService;
 import com.example.ppmusic.ui.adapters.RecentlyAddedAdapter;
-import com.example.ppmusic.utils.DBUtils;
-import com.example.ppmusic.utils.DisplayUtil;
-import com.example.ppmusic.utils.IntentUtil;
-import com.example.ppmusic.adapter.baseView.SwipeMenuListView;
-import com.example.ppmusic.adapter.pullrefresh.PullToRefreshLayout;
-import com.example.ppmusic.adapter.pullrefresh.PullToRefreshLayout.OnRefreshListener;
-import com.example.ppmusic.adapter.sortlistview.GroupMemberBean;
-import com.example.ppmusic.adapter.baseView.SwipeMenu;
-import com.example.ppmusic.adapter.baseView.SwipeMenuCreator;
-import com.example.ppmusic.adapter.baseView.SwipeMenuItem;
-import com.example.ppmusic.adapter.baseView.SwipeMenuListView.OnMenuItemClickListener;
 
-import android.app.AlertDialog;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.Loader;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.provider.MediaStore.Audio;
 import android.provider.MediaStore.MediaColumns;
 import android.provider.MediaStore.Audio.AudioColumns;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -58,7 +37,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 /**
  * 

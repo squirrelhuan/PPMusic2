@@ -172,6 +172,7 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 		lvSongs = rootView.findViewById(R.id.lvSongs);
 		lvSongs.setAdapter(adapter);
 		lvSongs.setOnCreateContextMenuListener(this);
+		//lvSongs.setEmptyView(new TextView(this));
 		mRecentlyAddedAdapter = new RecentlyAddedAdapter(getActivity(),
 				R.layout.item_song_list02 /* R.layout.listview_items */, null,
 				new String[] {}, new int[] {}, 0, lvSongs);
@@ -237,11 +238,6 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 		//Collections.sort(SourceDateList, pinyinComparator);
 
 		isEditMode();
-
-		// Adapter
-		//mTrackAdapter = new TrackAdapter(getActivity(), R.layout.listview_items, null,
-		//		new String[] {}, new int[] {}, 0);
-		//lvSongs.setOnCreateContextMenuListener(this);
 
 		// Important!
 		getLoaderManager().initLoader(0, null, this);
@@ -565,6 +561,7 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
 			mArtistIndex = data.getColumnIndexOrThrow(AudioColumns.ARTIST);
 			mAlbumIndex = data.getColumnIndexOrThrow(AudioColumns.ALBUM);
 		}
+		musicList.clear();
 		int index  = 0;
 		while (data.moveToNext()) {
 			MusicInfo musicInfo = new MusicInfo();
@@ -651,12 +648,18 @@ public class MainFragment3 extends MyBaseFragment implements OnClickListener ,Lo
             case USE_AS_RINGTONE:
                 MusicUtils.setRingtone(getActivity(), mSelectedId);
                 break;
-            case REMOVE: {
+            case REMOVE:{
                 removePlaylistItem(mSelectedPosition);
                 break;
             }
             case SEARCH: {
-                MusicUtils.doSearch(getActivity(), mCursor, mTitleIndex);
+				lvSongs.post(new Runnable() {
+					@Override
+					public void run() {
+						lvSongs.setSelectionAfterHeaderView();
+					}
+				});
+                //MusicUtils.doSearch(getActivity(), mCursor, mTitleIndex);
                 break;
             }
             default:

@@ -61,7 +61,7 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
 			viewHolder.imageView = (ImageView) view.findViewById(R.id.albumPhoto);
 			viewHolder.tvTitle = (TextView) view.findViewById(R.id.title);
 			viewHolder.artist = (TextView) view.findViewById(R.id.artist);
-			viewHolder.duration = (TextView) view.findViewById(R.id.duration);
+			//viewHolder.duration = (TextView) view.findViewById(R.id.duration);
 			viewHolder.tvLetter = (TextView) view.findViewById(R.id.catalog);
 			view.setTag(viewHolder);
 		} else {
