@@ -185,6 +185,7 @@ public class MusicUtils {
             }
             return resolver.query(uri, projection, selection, selectionArgs, sortOrder);
         } catch (UnsupportedOperationException ex) {
+            ex.printStackTrace();
             return null;
         }
     }
@@ -275,6 +276,7 @@ public class MusicUtils {
         try {
             colidx = cursor.getColumnIndexOrThrow(Audio.Playlists.Members.AUDIO_ID);
         } catch (IllegalArgumentException ex) {
+            ex.printStackTrace();
             colidx = cursor.getColumnIndexOrThrow(BaseColumns._ID);
         }
         for (int i = 0; i < len; i++) {
@@ -500,6 +502,7 @@ public class MusicUtils {
             resolver.update(ringUri, values, null, null);
         } catch (UnsupportedOperationException ex) {
             // most likely the card just got unmounted
+            ex.printStackTrace();
             return;
         }
 
@@ -786,6 +789,7 @@ public class MusicUtils {
                     R.plurals.NNNtrackstoplaylist, list.length, Integer.valueOf(list.length));
             Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
         } catch (RemoteException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -824,6 +828,7 @@ public class MusicUtils {
             try {
                 return mService.getAlbumId();
             } catch (RemoteException ex) {
+                ex.printStackTrace();
             }
         }
         return -1;
@@ -838,6 +843,7 @@ public class MusicUtils {
             try {
                 return mService.getArtistId();
             } catch (RemoteException ex) {
+                ex.printStackTrace();
             }
         }
         return -1;
@@ -852,6 +858,7 @@ public class MusicUtils {
             try {
                 return mService.getAudioId();
             } catch (RemoteException ex) {
+                ex.printStackTrace();
             }
         }
         return -1;
@@ -866,6 +873,7 @@ public class MusicUtils {
             try {
                 return mService.getArtistName();
             } catch (RemoteException ex) {
+                ex.printStackTrace();
             }
         }
         return null;
@@ -880,6 +888,7 @@ public class MusicUtils {
             try {
                 return mService.getAlbumName();
             } catch (RemoteException ex) {
+                ex.printStackTrace();
             }
         }
         return null;
@@ -894,6 +903,7 @@ public class MusicUtils {
             try {
                 return mService.getTrackName();
             } catch (RemoteException ex) {
+                ex.printStackTrace();
             }
         }
         return null;
@@ -907,6 +917,7 @@ public class MusicUtils {
             try {
                 return mService.duration();
             } catch (RemoteException e) {
+                e.printStackTrace();
             }
         }
         return 0;
@@ -941,6 +952,7 @@ public class MusicUtils {
                 }
             }
         } catch (RemoteException e) {
+            e.printStackTrace();
         }
     }
 
@@ -1125,6 +1137,7 @@ public class MusicUtils {
         try {
             return mService.isPlaying();
         } catch (RemoteException e) {
+            e.printStackTrace();
         }
         return false;
     }
@@ -1138,6 +1151,7 @@ public class MusicUtils {
         try {
             return mService.getQueuePosition();
         } catch (RemoteException e) {
+            e.printStackTrace();
         }
         return 0;
     }
@@ -1202,6 +1216,7 @@ public class MusicUtils {
         try {
         	mService.notifyChange(what);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

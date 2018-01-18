@@ -1288,6 +1288,7 @@ public class ApolloService extends Service implements
 						}
 					}
 				} catch (UnsupportedOperationException ex) {
+					ex.printStackTrace();
 				}
 
 				updateAlbumBitmap();
@@ -1336,9 +1337,11 @@ public class ApolloService extends Service implements
 					if (cursor != null)
 						cursor.close();
 				} catch (Exception ex) {
+					ex.printStackTrace();
 				}
 			}
 		} catch (UnsupportedOperationException ex) {
+			ex.printStackTrace();
 		}
 		return -1;
 	}
@@ -1749,6 +1752,7 @@ public class ApolloService extends Service implements
 				getContentResolver().update(uri, values, null, null);
 			}
 		} catch (SQLiteException ex) {
+			ex.printStackTrace();
 		}
 	}
 
@@ -1849,6 +1853,7 @@ public class ApolloService extends Service implements
 			mAutoShuffleList = list;
 			return true;
 		} catch (RuntimeException ex) {
+			ex.printStackTrace();
 		} finally {
 			if (c != null) {
 				c.close();
@@ -2301,8 +2306,10 @@ public class ApolloService extends Service implements
 				player.setAudioStreamType(AudioManager.STREAM_MUSIC);
 				player.prepare();
 			} catch (IOException ex) {
+				ex.printStackTrace();
 				return false;
 			} catch (IllegalArgumentException ex) {
+				ex.printStackTrace();
 				return false;
 			}
 			player.setOnCompletionListener(listener);
