@@ -24,6 +24,7 @@ import com.example.ppmusic.utils.DBUtils;
 import com.example.ppmusic.utils.ImageUtils;
 import com.example.ppmusic.utils.PreferencesService;
 import com.example.ppmusic.utils.ToastUtils;
+import com.huan.mylog.MyLog;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -54,7 +55,7 @@ public class MyApp extends Application {
 	public void onCreate() {
 		super.onCreate();
 
-		/*MyLog myLog = new MyLog(this);
+		MyLog myLog = new MyLog(this);
 		myLog.initialization();
 		myLog.setPrintType(MyLog.PrintType.All);// 设置打印类型
 		myLog.setErrorToast("对不起程序崩溃了");// 设置崩溃提示*/

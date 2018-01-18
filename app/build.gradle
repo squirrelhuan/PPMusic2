@@ -38,6 +38,7 @@ dependencies {
     compile 'com.android.support:design:26.+'
     testCompile 'junit:junit:4.12'
     compile files('libs/okio-1.6.0.jar')
+    implementation files('libs/CGQ-Log1.2.3.jar')
 }
 
 
