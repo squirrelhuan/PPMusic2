@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 
 package com.example.ppmusic.ui.fragment;
@@ -46,347 +46,350 @@ import static com.example.ppmusic.constants.Constants.TYPE_ALBUM;
  */
 public class PPBottomActionBarFragment extends Fragment {
 
-	private ImageButton mPrev, mNext,mSelectCD;
-	private CheckBox mPlay;
-	private BottomActionBar mBottomActionBar;
-	private TextView tv_music_MaxTime, tv_music_currentTime;
+    private ImageButton mPrev, mNext, mSelectCD;
+    private CheckBox mPlay;
+    private BottomActionBar mBottomActionBar;
+    private TextView tv_music_MaxTime, tv_music_currentTime;
 
-	// Progress
-	private SeekBar mProgress;
-	// Album art
-	private ImageView mAlbumArt;
+    // Progress
+    private SeekBar mProgress;
+    // Album art
+    private ImageView mAlbumArt;
 
-	// Notify if repeat or shuffle changes
-	private Toast mToast;
+    // Notify if repeat or shuffle changes
+    private Toast mToast;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View root = inflater.inflate(R.layout.bottom_action_bar_paopao,
-				container);
-		mBottomActionBar = new BottomActionBar(getActivity());
-		mAlbumArt = (ImageView) root.findViewById(R.id.audio_player_album_art);
-		mAlbumArt.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.bottom_action_bar_paopao,
+                container);
+        mBottomActionBar = new BottomActionBar(getActivity());
+        mAlbumArt = (ImageView) root.findViewById(R.id.audio_player_album_art);
+        mAlbumArt.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
 
-				Bundle bundle = new Bundle();
-				bundle.putString("Title", artistName);
-				// IntentUtil.jump(getActivity(), MusicListActivity.class,
-				// bundle);
-				Intent intent = new Intent();
-				intent.setClass(getActivity(), MusicDetailActivity.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
-						| Intent.FLAG_ACTIVITY_NEW_TASK);
-				intent.putExtras(bundle);
-				getActivity().startActivity(intent);
-			}
-		});
+                Bundle bundle = new Bundle();
+                bundle.putString("Title", artistName);
+                // IntentUtil.jump(getActivity(), MusicListActivity.class,
+                // bundle);
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), MusicDetailActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        | Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtras(bundle);
+                getActivity().startActivity(intent);
+            }
+        });
 
-		mPrev = (ImageButton) root.findViewById(R.id.bottom_action_bar_previous);
-		mPrev.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (MusicUtils.mService == null)
-					return;
-				try {
-					if (MusicUtils.mService.position() < 2000) {
-						MusicUtils.mService.prev();
-					} else {
-						MusicUtils.mService.seek(0);
-						MusicUtils.mService.play();
-					}
-				} catch (RemoteException ex) {
-					ex.printStackTrace();
-				}
-			}
-		});
+        mPrev = (ImageButton) root.findViewById(R.id.bottom_action_bar_previous);
+        mPrev.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (MusicUtils.mService == null)
+                    return;
+                try {
+                    if (MusicUtils.mService.position() < 2000) {
+                        MusicUtils.mService.prev();
+                    } else {
+                        MusicUtils.mService.seek(0);
+                        MusicUtils.mService.play();
+                    }
+                } catch (RemoteException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
-		mPlay = (CheckBox) root.findViewById(R.id.bottom_action_bar_play);
-		mPlay.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				doPauseResume();
-			}
-		});
+        mPlay = (CheckBox) root.findViewById(R.id.bottom_action_bar_play);
+        mPlay.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                doPauseResume();
+            }
+        });
 
 
-		mNext = (ImageButton) root.findViewById(R.id.bottom_action_bar_next);
-		mNext.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (MusicUtils.mService == null)
-					return;
-				try {
-					MusicUtils.mService.next();
-				} catch (RemoteException ex) {
-					ex.printStackTrace();
-				}
-			}
-		});
+        mNext = (ImageButton) root.findViewById(R.id.bottom_action_bar_next);
+        mNext.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (MusicUtils.mService == null)
+                    return;
+                try {
+                    MusicUtils.mService.next();
+                } catch (RemoteException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
-		mSelectCD = (ImageButton) root.findViewById(R.id.bottom_select_cd_open);
-		mSelectCD.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-			//	rl_for_cd.setVisibility(View.VISIBLE);
-				//toggleShuffle();
-				//cycleRepeat();
-				Context context = getActivity();
-				getActivity().startActivity(new Intent(context, MusicQuickList.class));
-				//设置切换动画，从右边进入，左边退出
-				getActivity().overridePendingTransition(R.anim.orignal, R.anim.orignal);
-			}
-		});
+        mSelectCD = (ImageButton) root.findViewById(R.id.bottom_select_cd_open);
+        mSelectCD.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //	rl_for_cd.setVisibility(View.VISIBLE);
+                //toggleShuffle();
+                //cycleRepeat();
+                Context context = getActivity();
+                getActivity().startActivity(new Intent(context, MusicQuickList.class));
+                //设置切换动画，从右边进入，左边退出
+                getActivity().overridePendingTransition(R.anim.orignal, R.anim.orignal);
+            }
+        });
 
-		// ThemeUtils.setImageButton(getActivity(), mPrev, "apollo_previous");
-		// ThemeUtils.setImageButton(getActivity(), mNext, "apollo_next");
+        // ThemeUtils.setImageButton(getActivity(), mPrev, "apollo_previous");
+        // ThemeUtils.setImageButton(getActivity(), mNext, "apollo_next");
 
-		mProgress = (SeekBar) root.findViewById(R.id.sb_music_process);
-		if (mProgress instanceof SeekBar) {
-			SeekBar seeker = mProgress;
-			seeker.setOnSeekBarChangeListener(mSeekListener);
-		}
-		mProgress.setMax(1000);
-		ThemeUtils.setProgessDrawable(getActivity(), mProgress,
-				"apollo_seekbar_background");
+        mProgress = (SeekBar) root.findViewById(R.id.sb_music_process);
+        if (mProgress instanceof SeekBar) {
+            SeekBar seeker = mProgress;
+            seeker.setOnSeekBarChangeListener(mSeekListener);
+        }
+        mProgress.setMax(1000);
+        ThemeUtils.setProgessDrawable(getActivity(), mProgress,
+                "apollo_seekbar_background");
 
-		// mTrackName = (TextView)root.findViewById(R.id.audio_player_track);
-		mTotalTime = (TextView) root.findViewById(R.id.audio_player_total_time);
-		mCurrentTime = (TextView) root
-				.findViewById(R.id.audio_player_current_time);
-		return root;
-	}
+        // mTrackName = (TextView)root.findViewById(R.id.audio_player_track);
+        mTotalTime = (TextView) root.findViewById(R.id.audio_player_total_time);
+        mCurrentTime = (TextView) root
+                .findViewById(R.id.audio_player_current_time);
+        return root;
+    }
 
-	// Where we are in the track
-	private long mDuration, mLastSeekEventTime, mPosOverride = -1,
-			mStartSeekPos = 0;
+    // Where we are in the track
+    private long mDuration, mLastSeekEventTime, mPosOverride = -1,
+            mStartSeekPos = 0;
 
-	private boolean mFromTouch, paused = false;
-	/**
-	 * Drag to a specfic duration
-	 */
-	private final OnSeekBarChangeListener mSeekListener = new OnSeekBarChangeListener() {
-		@Override
-		public void onStartTrackingTouch(SeekBar bar) {
-			mLastSeekEventTime = 0;
-			mFromTouch = true;
-		}
+    private boolean mFromTouch, paused = false;
+    /**
+     * Drag to a specfic duration
+     */
+    private final OnSeekBarChangeListener mSeekListener = new OnSeekBarChangeListener() {
+        @Override
+        public void onStartTrackingTouch(SeekBar bar) {
+            mLastSeekEventTime = 0;
+            mFromTouch = true;
+        }
 
-		@Override
-		public void onProgressChanged(SeekBar bar, int progress,
-				boolean fromuser) {
-			if (!fromuser || (MusicUtils.mService == null))
-				return;
-			long now = SystemClock.elapsedRealtime();
-			if ((now - mLastSeekEventTime) > 250) {
-				mLastSeekEventTime = now;
-				mPosOverride = mDuration * progress / 1000;
-				try {
-					MusicUtils.mService.seek(mPosOverride);
-				} catch (RemoteException ex) {
-					ex.printStackTrace();
-				}
+        @Override
+        public void onProgressChanged(SeekBar bar, int progress,
+                                      boolean fromuser) {
+            if (!fromuser || (MusicUtils.mService == null))
+                return;
+            long now = SystemClock.elapsedRealtime();
+            if ((now - mLastSeekEventTime) > 250) {
+                mLastSeekEventTime = now;
+                mPosOverride = mDuration * progress / 1000;
+                try {
+                    MusicUtils.mService.seek(mPosOverride);
+                } catch (RemoteException ex) {
+                    ex.printStackTrace();
+                }
 
-				if (!mFromTouch) {
-					refreshNow();
-					mPosOverride = -1;
-				}
-			}
-		}
+                if (!mFromTouch) {
+                    refreshNow();
+                    mPosOverride = -1;
+                }
+            }
+        }
 
-		@Override
-		public void onStopTrackingTouch(SeekBar bar) {
-			mPosOverride = -1;
-			mFromTouch = false;
-		}
-	};
+        @Override
+        public void onStopTrackingTouch(SeekBar bar) {
+            mPosOverride = -1;
+            mFromTouch = false;
+        }
+    };
 
-	// Total and current time
-	private TextView mTotalTime, mCurrentTime;
+    // Total and current time
+    private TextView mTotalTime, mCurrentTime;
 
-	/**
-	 * @return current time
-	 */
-	private long refreshNow() {
-		if (MusicUtils.mService == null)
-			return 500;
-		try {
-			long pos = mPosOverride < 0 ? MusicUtils.mService.position()
-					: mPosOverride;
-			long remaining = 1000 - (pos % 1000);
-			if ((pos >= 0) && (mDuration > 0)) {
-				mCurrentTime.setText(MusicUtils.makeTimeString(getActivity(),
-						pos / 1000));
+    /**
+     * @return current time
+     */
+    private long refreshNow() {
+        if (MusicUtils.mService == null)
+            return 500;
+        try {
+            long pos = mPosOverride < 0 ? MusicUtils.mService.position()
+                    : mPosOverride;
+            long remaining = 1000 - (pos % 1000);
+            if ((pos >= 0) && (mDuration > 0)) {
+                mCurrentTime.setText(MusicUtils.makeTimeString(getActivity(),
+                        pos / 1000));
 
-				if (MusicUtils.mService.isPlaying()) {
-					mCurrentTime.setVisibility(View.VISIBLE);
-					mCurrentTime.setTextColor(getResources().getColor(
-							R.color.white));
-					// Theme chooser
-					ThemeUtils.setTextColor(getActivity(), mCurrentTime,
-							"audio_player_text_color");
-				} else {
-					// blink the counter
-					int col = mCurrentTime.getCurrentTextColor();
-					mCurrentTime.setTextColor(col == getResources().getColor(
-							R.color.white) ? getResources().getColor(
-							R.color.transparent_white_cc) : getResources()
-							.getColor(R.color.white));
-					remaining = 500;
-					// Theme chooser
-					ThemeUtils.setTextColor(getActivity(), mCurrentTime,
-							"audio_player_text_color");
-				}
+                if (MusicUtils.mService.isPlaying()) {
+                    mCurrentTime.setVisibility(View.VISIBLE);
+                    mCurrentTime.setTextColor(getResources().getColor(
+                            R.color.white));
+                    // Theme chooser
+                    ThemeUtils.setTextColor(getActivity(), mCurrentTime,
+                            "audio_player_text_color");
+                } else {
+                    // blink the counter
+                    int col = mCurrentTime.getCurrentTextColor();
+                    mCurrentTime.setTextColor(col == getResources().getColor(
+                            R.color.white) ? getResources().getColor(
+                            R.color.transparent_white_cc) : getResources()
+                            .getColor(R.color.white));
+                    remaining = 500;
+                    // Theme chooser
+                    ThemeUtils.setTextColor(getActivity(), mCurrentTime,
+                            "audio_player_text_color");
+                }
 
-				mProgress.setProgress((int) (1000 * pos / mDuration));
-			} else {
-				mCurrentTime.setText("--:--");
-				mProgress.setProgress(1000);
-			}
-			return remaining;
-		} catch (RemoteException ex) {
-			ex.printStackTrace();
-		}
-		return 500;
-	}
+                mProgress.setProgress((int) (1000 * pos / mDuration));
+            } else {
+                mCurrentTime.setText("--:--");
+                mProgress.setProgress(1000);
+            }
+            return remaining;
+        } catch (RemoteException ex) {
+            ex.printStackTrace();
+        }
+        return 500;
+    }
 
-	/**
-	 * Update the list as needed
-	 */
-	private final BroadcastReceiver mMediaStatusReceiver = new BroadcastReceiver() {
+    /**
+     * Update the list as needed
+     */
+    private final BroadcastReceiver mMediaStatusReceiver = new BroadcastReceiver() {
 
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			if (mBottomActionBar != null) {
-				mBottomActionBar.updateBottomActionBar(getActivity());
-			}
-			mHandler.sendMessage(mHandler.obtainMessage(UPDATEINFO));
-		}
-	};
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (mBottomActionBar != null) {
+                mBottomActionBar.updateBottomActionBar(getActivity());
+            }
+            mHandler.sendMessage(mHandler.obtainMessage(UPDATEINFO));
+        }
+    };
 
-	@Override
-	public void onStart() {
-		super.onStart();
-		IntentFilter filter = new IntentFilter();
-		filter.addAction(ApolloService.PLAYSTATE_CHANGED);
-		filter.addAction(ApolloService.META_CHANGED);
-		getActivity().registerReceiver(mMediaStatusReceiver, filter);
+    @Override
+    public void onStart() {
+        super.onStart();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ApolloService.PLAYSTATE_CHANGED);
+        filter.addAction(ApolloService.META_CHANGED);
+        getActivity().registerReceiver(mMediaStatusReceiver, filter);
 
-		IntentFilter f = new IntentFilter();
-		f.addAction(ApolloService.PLAYSTATE_CHANGED);
-		f.addAction(ApolloService.META_CHANGED);
-		getActivity().registerReceiver(mStatusListener, new IntentFilter(f));
+        IntentFilter f = new IntentFilter();
+        f.addAction(ApolloService.PLAYSTATE_CHANGED);
+        f.addAction(ApolloService.META_CHANGED);
+        getActivity().registerReceiver(mStatusListener, new IntentFilter(f));
 
-		long next = refreshNow();
-		queueNextRefresh(next);
+        long next = refreshNow();
+        queueNextRefresh(next);
 
-		// WeakReference<VisualizerView> mView = new
-		// WeakReference<VisualizerView>((VisualizerView)root.findViewById(R.id.visualizerView));
-		// VisualizerUtils.updateVisualizerView(mView);
-	}
+        // WeakReference<VisualizerView> mView = new
+        // WeakReference<VisualizerView>((VisualizerView)root.findViewById(R.id.visualizerView));
+        // VisualizerUtils.updateVisualizerView(mView);
+    }
 
-	@Override
-	public void onStop() {
-		getActivity().unregisterReceiver(mMediaStatusReceiver);
-		super.onStop();
-	}
+    @Override
+    public void onStop() {
+        getActivity().unregisterReceiver(mMediaStatusReceiver);
+        super.onStop();
+    }
 
-	/**
-	 * Play and pause music
-	 */
-	private void doPauseResume() {
-		try {
-			if (MusicUtils.mService != null) {
-				if (MusicUtils.mService.isPlaying()) {
-					MusicUtils.mService.pause();
-				} else {
-					MusicUtils.mService.play();
-				}
-			}
-		} catch (RemoteException ex) {
-			ex.printStackTrace();
-		}
-	}
+    /**
+     * Play and pause music
+     */
+    private void doPauseResume() {
+        try {
+            if (MusicUtils.mService != null) {
+                if (MusicUtils.mService.isPlaying()) {
+                    MusicUtils.mService.pause();
+                } else {
+                    MusicUtils.mService.play();
+                }
+            }
+        } catch (RemoteException ex) {
+            ex.printStackTrace();
+        }
+    }
 
-	// Handler
-	private static final int REFRESH = 1, UPDATEINFO = 2;
-	/**
-	 * Update everything as the meta or playstate changes
-	 */
-	private final BroadcastReceiver mStatusListener = new BroadcastReceiver() {
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			if (intent.getAction().equals(ApolloService.META_CHANGED))
-				mHandler.sendMessage(mHandler.obtainMessage(UPDATEINFO));
-		}
-	};
+    // Handler
+    private static final int REFRESH = 1, UPDATEINFO = 2;
+    /**
+     * Update everything as the meta or playstate changes
+     */
+    private final BroadcastReceiver mStatusListener = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(ApolloService.META_CHANGED))
+                mHandler.sendMessage(mHandler.obtainMessage(UPDATEINFO));
+        }
+    };
 
-	/**
-	 * @param delay
-	 */
-	private void queueNextRefresh(long delay) {
-		if (!paused) {
-			Message msg = mHandler.obtainMessage(REFRESH);
-			mHandler.removeMessages(REFRESH);
-			mHandler.sendMessageDelayed(msg, delay);
-		}
-	}
+    /**
+     * @param delay
+     */
+    private void queueNextRefresh(long delay) {
+        if (!paused) {
+            Message msg = mHandler.obtainMessage(REFRESH);
+            mHandler.removeMessages(REFRESH);
+            mHandler.sendMessageDelayed(msg, delay);
+        }
+    }
 
-	/**
-	 * We need to refresh the time via a Handler
-	 */
-	private final Handler mHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			switch (msg.what) {
-			case REFRESH:
-				long next = refreshNow();
-				queueNextRefresh(next);
-				break;
-			case UPDATEINFO:
-				updateMusicInfo();
-				break;
-			default:
-				break;
-			}
-		}
-	};
+    /**
+     * We need to refresh the time via a Handler
+     */
+    private final Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (isAdded()) {
 
-	String artistName;
+                switch (msg.what) {
+                    case REFRESH:
+                        long next = refreshNow();
+                        queueNextRefresh(next);
+                        break;
+                    case UPDATEINFO:
+                        updateMusicInfo();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    };
 
-	/**
-	 * Update what's playing
-	 */
-	private void updateMusicInfo() {
-		if (MusicUtils.mService == null) {
-			return;
-		}
+    String artistName;
 
-		String artistName = MusicUtils.getArtistName();
-		this.artistName = artistName;
-		String albumName = MusicUtils.getAlbumName();
-		String trackName = MusicUtils.getTrackName();
-		String albumId = String.valueOf(MusicUtils.getCurrentAlbumId());
-		mDuration = MusicUtils.getDuration();
-		mTotalTime.setText(MusicUtils.makeTimeString(getActivity(),
-				mDuration / 1000));
+    /**
+     * Update what's playing
+     */
+    private void updateMusicInfo() {
+        if (MusicUtils.mService == null) {
+            return;
+        }
 
-		ImageInfo mInfo = new ImageInfo();
-		mInfo.type = TYPE_ALBUM;
-		mInfo.size = SIZE_THUMB;
-		mInfo.source = SRC_FIRST_AVAILABLE;
-		mInfo.data = new String[] { albumId, artistName, albumName };
+        String artistName = MusicUtils.getArtistName();
+        this.artistName = artistName;
+        String albumName = MusicUtils.getAlbumName();
+        String trackName = MusicUtils.getTrackName();
+        String albumId = String.valueOf(MusicUtils.getCurrentAlbumId());
+        mDuration = MusicUtils.getDuration();
+        mTotalTime.setText(MusicUtils.makeTimeString(getActivity(),
+                mDuration / 1000));
 
-		// ImageProvider.getInstance(getActivity()).loadImage(mAlbumArt, mInfo);
-		//searchMusic(trackName);
-		// Theme chooser
-		ThemeUtils.setTextColor(getActivity(), mTotalTime,
-				"audio_player_text_color");
-		mPlay.setSelected(MusicUtils.isPlaying());
-	}
+        ImageInfo mInfo = new ImageInfo();
+        mInfo.type = TYPE_ALBUM;
+        mInfo.size = SIZE_THUMB;
+        mInfo.source = SRC_FIRST_AVAILABLE;
+        mInfo.data = new String[]{albumId, artistName, albumName};
+
+        // ImageProvider.getInstance(getActivity()).loadImage(mAlbumArt, mInfo);
+        //searchMusic(trackName);
+        // Theme chooser
+        ThemeUtils.setTextColor(getActivity(), mTotalTime,
+                "audio_player_text_color");
+        mPlay.setSelected(MusicUtils.isPlaying());
+    }
 /*
-	public void searchMusic(String nameORsinger) {
+    public void searchMusic(String nameORsinger) {
 
 		RequestParams params = new RequestParams();
 		params.put("all", nameORsinger);
@@ -436,7 +439,7 @@ public class PPBottomActionBarFragment extends Fragment {
 				});
 	}*/
 
-	String img_url = "";
+    String img_url = "";
 
 	/*public void searchMusicImage(int rid) {
 		// &rid=[可为空]from=pc&json=[json数据排放方式,一般为1]&version=1&width=[写真宽度]&height=[写真高度]

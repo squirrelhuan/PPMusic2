@@ -150,7 +150,7 @@ public class PlayExternal extends Activity
                     Toast.LENGTH_SHORT).show();
             Log.e(TAG, String.format("Failed to play external file: ", uri.toString()), e);
             try {
-                Thread.sleep(1000L);
+                Thread.sleep(100L);
             }catch (Exception e2) {}
             finish();
         }
@@ -174,7 +174,7 @@ public class PlayExternal extends Activity
         }
 
         // Show now playing
-        Intent intent = new Intent(this, AudioPlayerHolder.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
@@ -186,7 +186,7 @@ public class PlayExternal extends Activity
         MusicUtils.mService.play();
 
         // Show now playing
-        Intent nowPlayingIntent = new Intent(this, AudioPlayerHolder.class);
+        Intent nowPlayingIntent = new Intent(this, MainActivity.class);
         startActivity(nowPlayingIntent);
     }
 

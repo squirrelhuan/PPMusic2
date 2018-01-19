@@ -4704,15 +4704,8 @@ containing a value of this type.
         public static final int Apollo_Holo_Light=0x7f0a00b3;
         /**  API 11 theme customizations can go here. 
  API 14 theme customizations can go here. 
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
          */
         public static final int AppBaseTheme=0x7f0a000c;
-        /**  Customize your theme here. 
-         */
         public static final int AppTheme=0x7f0a00b4;
         public static final int AudioPlayerButton=0x7f0a00b5;
         public static final int AudioPlayerText=0x7f0a00b6;
@@ -4887,8 +4880,6 @@ containing a value of this type.
         public static final int GridviewShadowedText=0x7f0a00eb;
         public static final int HeaderText=0x7f0a00ec;
         public static final int NotificationContent=0x7f0a00ed;
-        /**  <item name="android:textStyle">bold</item> 
-         */
         public static final int NotificationTitle=0x7f0a00ee;
         public static final int NotitleBar=0x7f0a00ef;
         public static final int OverFlowHolo=0x7f0a00f0;
@@ -4924,9 +4915,6 @@ containing a value of this type.
         public static final int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow=0x7f0a003a;
         public static final int SeparatorTextViewStyle=0x7f0a00f3;
         public static final int ShadowedText=0x7f0a00f4;
-        /** <item name="android:windowBackground">@drawable/layout_list_start_pic</item>
- All customizations that are NOT specific to a particular API-level can go here. 
-         */
         public static final int StartAppTheme=0x7f0a00f5;
         public static final int StatusBarButton=0x7f0a00f6;
         public static final int StatusBarText=0x7f0a00f7;

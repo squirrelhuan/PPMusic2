@@ -55,10 +55,10 @@ public class MyApp extends Application {
 	public void onCreate() {
 		super.onCreate();
 
-		MyLog myLog = new MyLog(this);
-		myLog.initialization();
-		myLog.setPrintType(MyLog.PrintType.All);// 设置打印类型
-		myLog.setErrorToast("对不起程序崩溃了");// 设置崩溃提示*/
+		//MyLog myLog = new MyLog(this);
+		//myLog.initialization();
+		//myLog.setPrintType(MyLog.PrintType.All);// 设置打印类型
+		//myLog.setErrorToast("对不起程序崩溃了");// 设置崩溃提示*/
 		// mylog.setErrorCatchedListener(new one);
 		//connectToNatureService();
 		instance = this;

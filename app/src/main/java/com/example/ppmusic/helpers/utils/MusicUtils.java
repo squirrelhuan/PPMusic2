@@ -800,6 +800,9 @@ public class MusicUtils {
      */
     public static String makeTimeString(Context context, long secs) {
 
+        if(context==null){
+            return "00:00";
+        }
         String durationformat = context.getString(secs < 3600 ? R.string.durationformatshort
                 : R.string.durationformatlong);
 
